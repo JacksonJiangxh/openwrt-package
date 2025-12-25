@@ -14,16 +14,16 @@ from pathlib import Path
 # 配置多个源仓库信息
 SOURCE_REPOS = {
     "small-package": {
-        "url": "https://github.com/kenzok8/small-package.git",
-        "branch": "master"
+        "url": "https://github.com/kenzok8/small-package.git"
+        # 不指定branch，自动使用仓库默认主分支
     },
     "helloworld": {
-        "url": "https://github.com/fw876/helloworld.git",
-        "branch": "master"
+        "url": "https://github.com/fw876/helloworld.git"
+        # 不指定branch，自动使用仓库默认主分支
     },
     "modem_feeds": {
-        "url": "https://github.com/FUjr/modem_feeds.git",
-        "branch": "master"
+        "url": "https://github.com/FUjr/modem_feeds.git"
+        # 不指定branch，自动使用仓库默认主分支
     }
 }
 
@@ -41,10 +41,146 @@ class PackageSyncer:
         self.work_dir = Path(work_dir)
         self.output_dir = Path(output_dir)
         self.package_hashes = set()  # 用于存储已同步的包的哈希值
+        self.package_versions = {}  # 用于存储已同步的包名和版本信息 {pkg_name: (version, release)}
         
         # 创建目录
         self.work_dir.mkdir(parents=True, exist_ok=True)
         self.output_dir.mkdir(parents=True, exist_ok=True)
+        
+        # 扫描仓库中已有的包，读取它们的版本信息
+        self._scan_existing_packages()
+    
+    def _scan_existing_packages(self):
+        """
+        扫描仓库中已有的包，读取它们的版本信息
+        """
+        print("扫描仓库中已有的软件包...")
+        
+        # 需要保留的文件和目录列表
+        keep_items = ['.git', '.github', '.gitignore', 'README.md', 'sync_packages.py', 'temp_repos', 'requirements.txt']
+        
+        # 遍历输出目录中的所有项
+        for item in self.output_dir.iterdir():
+            # 跳过需要保留的项目
+            if item.name in keep_items:
+                continue
+                
+            if item.is_dir():
+                makefile_path = item / "Makefile"
+                if makefile_path.exists():
+                    # 解析已存在包的版本信息
+                    pkg_info = self._parse_makefile_version(makefile_path)
+                    pkg_name = pkg_info["PKG_NAME"] or item.name
+                    version = pkg_info["PKG_VERSION"]
+                    release = pkg_info["PKG_RELEASE"]
+                    
+                    # 计算已存在包的哈希值
+                    pkg_hash = self._calculate_dir_hash(item)
+                    
+                    if pkg_hash:
+                        # 记录已存在包的版本信息和哈希值
+                        self.package_versions[pkg_name] = (version, release)
+                        self.package_hashes.add(pkg_hash)
+                        print(f"发现已有软件包: {item.name} (版本: {version}-{release})")
+        
+        print(f"共扫描到 {len(self.package_versions)} 个已存在的软件包")
+    
+    def _compare_versions(self, ver1, ver2):
+        """
+        比较两个版本字符串的大小
+        
+        Args:
+            ver1: 版本字符串1
+            ver2: 版本字符串2
+            
+        Returns:
+            int: 1 if ver1 > ver2, -1 if ver1 < ver2, 0 if equal, -2 if comparison failed
+        """
+        try:
+            def normalize(v):
+                # 确保v是字符串
+                v = str(v)
+                # 跳过包含环境变量或特殊字符的版本号
+                if '$' in v or '(' in v or ')' in v or 'call' in v or 'subst' in v:
+                    return [v]  # 直接返回原始字符串作为一个部分
+                parts = []
+                for part in v.split('.'):
+                    # 尝试转换为整数，如果失败则保留字符串
+                    try:
+                        parts.append(int(part))
+                    except ValueError:
+                        # 处理非数字部分，如 alpha, beta 等
+                        parts.append(part)
+                return parts
+            
+            v1 = normalize(ver1)
+            v2 = normalize(ver2)
+            
+            for a, b in zip(v1, v2):
+                if isinstance(a, int) and isinstance(b, int):
+                    # 两个都是整数，直接比较
+                    if a > b:
+                        return 1
+                    elif a < b:
+                        return -1
+                elif isinstance(a, str) and isinstance(b, str):
+                    # 两个都是字符串，直接比较
+                    if a > b:
+                        return 1
+                    elif a < b:
+                        return -1
+                else:
+                    # 一个是整数，一个是字符串，将整数转换为字符串再比较
+                    if str(a) > str(b):
+                        return 1
+                    elif str(a) < str(b):
+                        return -1
+            
+            # 如果前面的部分都相同，比较长度
+            if len(v1) > len(v2):
+                return 1
+            elif len(v1) < len(v2):
+                return -1
+            else:
+                return 0
+        except Exception as e:
+            # 版本比较失败，返回-2表示比较出错
+            print(f"版本比较失败: {ver1} vs {ver2}, 错误: {e}")
+            return -2
+    
+    def _parse_makefile_version(self, makefile_path):
+        """
+        解析 Makefile 中的版本信息
+        
+        Args:
+            makefile_path: Makefile 文件路径
+            
+        Returns:
+            dict: 包含 PKG_NAME, PKG_VERSION, PKG_RELEASE 的字典
+        """
+        result = {
+            "PKG_NAME": None,
+            "PKG_VERSION": "0",
+            "PKG_RELEASE": "0"
+        }
+        
+        try:
+            with open(makefile_path, 'r', encoding='utf-8') as f:
+                for line in f:
+                    line = line.strip()
+                    # 解析 PKG_NAME
+                    if line.startswith('PKG_NAME:='):
+                        result['PKG_NAME'] = line.split(':=')[1].strip()
+                    # 解析 PKG_VERSION
+                    elif line.startswith('PKG_VERSION:='):
+                        result['PKG_VERSION'] = line.split(':=')[1].strip()
+                    # 解析 PKG_RELEASE
+                    elif line.startswith('PKG_RELEASE:='):
+                        result['PKG_RELEASE'] = line.split(':=')[1].strip()
+        except Exception as e:
+            print(f"解析 Makefile {makefile_path} 时出错: {e}")
+        
+        return result
     
     def _calculate_dir_hash(self, dir_path):
         """
@@ -73,14 +209,14 @@ class PackageSyncer:
         
         return hasher.hexdigest()
     
-    def _clone_or_pull_repo(self, repo_name, repo_url, branch):
+    def _clone_or_pull_repo(self, repo_name, repo_url, branch=None):
         """
         克隆或更新仓库
         
         Args:
             repo_name: 仓库名称
             repo_url: 仓库 URL
-            branch: 分支名称
+            branch: 分支名称（可选，不指定则使用仓库默认主分支）
             
         Returns:
             Path: 仓库本地路径
@@ -92,11 +228,22 @@ class PackageSyncer:
             print(f"更新仓库: {repo_name}")
             repo = git.Repo(repo_path)
             origin = repo.remotes.origin
-            origin.pull(branch)
+            if branch:
+                origin.pull(branch)
+            else:
+                # 不指定分支，更新当前分支
+                origin.pull()
         else:
             # 如果仓库不存在，执行 clone 克隆
             print(f"克隆仓库: {repo_name}")
-            repo = git.Repo.clone_from(repo_url, repo_path, branch=branch)
+            clone_options = {
+                "depth": 1,  # 浅克隆，只克隆最近一次提交，加速克隆
+                "single_branch": True  # 只克隆单个分支
+            }
+            if branch:
+                clone_options["branch"] = branch
+            
+            repo = git.Repo.clone_from(repo_url, repo_path, **clone_options)
         
         return repo_path
     
@@ -112,16 +259,8 @@ class PackageSyncer:
         """
         dir_path = Path(dir_path)
         
-        # 检查是否包含 Makefile
-        if not (dir_path / "Makefile").exists():
-            # 检查是否为 luci 应用目录，luci 应用的 Makefile 通常在根目录或子目录
-            if "luci-app-" in dir_path.name:
-                # 检查 luci 应用特有的文件结构
-                if (dir_path / "luasrc").exists() or (dir_path / "root").exists():
-                    return True
-            return False
-        
-        return True
+        # 确保只有包含 Makefile 的目录才会被同步
+        return (dir_path / "Makefile").exists()
     
     def sync_package(self, package_path, repo_name):
         """
@@ -132,18 +271,65 @@ class PackageSyncer:
             repo_name: 源仓库名称
         """
         package_name = package_path.name
+        makefile_path = package_path / "Makefile"
+        
+        # 解析 Makefile 中的版本信息
+        pkg_info = self._parse_makefile_version(makefile_path)
+        current_pkg_name = pkg_info["PKG_NAME"] or package_name
+        current_version = pkg_info["PKG_VERSION"]
+        current_release = pkg_info["PKG_RELEASE"]
         
         # 计算软件包哈希值
         package_hash = self._calculate_dir_hash(package_path)
         if not package_hash:
             return
         
-        # 检查是否已存在相同的软件包
+        # 检查是否已存在相同的软件包哈希
         if package_hash in self.package_hashes:
             print(f"跳过已存在的软件包: {package_name} (来自 {repo_name})")
             return
         
-        # 添加到已同步列表
+        # 检查是否已存在该包名
+        if current_pkg_name in self.package_versions:
+            # 比较版本
+            existing_version, existing_release = self.package_versions[current_pkg_name]
+            
+            # 先比较主版本
+            ver_compare = self._compare_versions(current_version, existing_version)
+            
+            # 版本比较失败，保留已有的包，丢弃新的包
+            if ver_compare == -2:
+                print(f"版本比较失败，保留已有软件包: {package_name} (来自 {repo_name})")
+                return
+            
+            if ver_compare > 0:
+                # 当前版本更高，更新
+                print(f"更新软件包: {package_name} (来自 {repo_name})，版本 {existing_version} -> {current_version}")
+            elif ver_compare == 0:
+                # 主版本相同，比较 release 版本
+                rel_compare = self._compare_versions(current_release, existing_release)
+                
+                # release 版本比较失败，保留已有的包
+                if rel_compare == -2:
+                    print(f"Release 版本比较失败，保留已有软件包: {package_name} (来自 {repo_name})")
+                    return
+                    
+                if rel_compare > 0:
+                    # 当前 release 版本更高，更新
+                    print(f"更新软件包: {package_name} (来自 {repo_name})，版本 {existing_version}-{existing_release} -> {current_version}-{current_release}")
+                else:
+                    # 版本更低或相同，跳过
+                    print(f"跳过版本更低的软件包: {package_name} (来自 {repo_name})，现有版本 {existing_version}-{existing_release} >= 当前版本 {current_version}-{current_release}")
+                    return
+            else:
+                # 版本更低，跳过
+                print(f"跳过版本更低的软件包: {package_name} (来自 {repo_name})，现有版本 {existing_version} >= 当前版本 {current_version}")
+                return
+        else:
+            print(f"同步软件包: {package_name} (来自 {repo_name})，版本 {current_version}-{current_release}")
+        
+        # 更新版本信息和哈希值
+        self.package_versions[current_pkg_name] = (current_version, current_release)
         self.package_hashes.add(package_hash)
         
         # 目标路径
@@ -154,7 +340,6 @@ class PackageSyncer:
             shutil.rmtree(dest_path)
         
         # 复制软件包目录
-        print(f"同步软件包: {package_name} (来自 {repo_name})")
         shutil.copytree(package_path, dest_path)
         
         # 添加源仓库信息文件
@@ -162,6 +347,8 @@ class PackageSyncer:
             f.write(f"repo: {repo_name}\n")
             f.write(f"package: {package_name}\n")
             f.write(f"hash: {package_hash}\n")
+            f.write(f"version: {current_version}\n")
+            f.write(f"release: {current_release}\n")
     
     def _find_all_package_dirs(self, root_path):
         """
@@ -199,8 +386,12 @@ class PackageSyncer:
             repo_name: 仓库名称
             repo_config: 仓库配置
         """
-        # 克隆或更新仓库
-        repo_path = self._clone_or_pull_repo(repo_name, repo_config["url"], repo_config["branch"])
+        # 克隆或更新仓库，处理可选的branch配置
+        repo_path = self._clone_or_pull_repo(
+            repo_name, 
+            repo_config["url"], 
+            repo_config.get("branch")  # 使用get方法，branch不存在时返回None
+        )
         
         # 递归查找所有有效的软件包目录
         package_dirs = self._find_all_package_dirs(repo_path)
@@ -211,24 +402,12 @@ class PackageSyncer:
     
     def run_sync(self):
         """
-        执行同步操作
+        执行同步操作（累增同步，保留现有包）
         """
         print("开始同步 OpenWrt 软件包...")
         
-        # 清空输出目录，保留重要文件和目录
-        if self.output_dir.exists():
-            # 需要保留的文件和目录列表
-            keep_items = ['.git', '.github', '.gitignore', 'README.md', 'sync_packages.py', 'temp_repos']
-            
-            for item in self.output_dir.iterdir():
-                # 跳过需要保留的项目
-                if item.name in keep_items:
-                    continue
-                    
-                if item.is_dir():
-                    shutil.rmtree(item)
-                else:
-                    item.unlink()
+        # 初始化已处理的包列表
+        processed_packages = set()
         
         # 遍历所有源仓库
         for repo_name, repo_config in SOURCE_REPOS.items():
@@ -239,6 +418,7 @@ class PackageSyncer:
         
         print(f"同步完成！共同步 {len(self.package_hashes)} 个软件包")
         print(f"同步结果存储在: {self.output_dir}")
+        print(f"已处理 {len(self.package_versions)} 个包名，采用累增同步模式，保留现有包")
 
 def main():
     """主函数"""
