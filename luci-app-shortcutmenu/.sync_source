@@ -1,5 +1,4 @@
 repo: small-package
 package: luci-app-shortcutmenu
-hash: 2fc9e91b1175ffdd3c9397a9acb9112e
 version: v0.0.5
 release: 0
