@@ -387,10 +387,10 @@ jobs:
         echo '        print(f"同步完成！最终得到 {len(self.package_versions)} 个软件包")' >> sync_packages.py
         echo '        # 打印统计信息' >> sync_packages.py
         echo '        print("\n=== 同步统计信息 ===")' >> sync_packages.py
-        echo "        print(f'原有软件包数量: {self.stats["initial_count"]}')" >> sync_packages.py
-        echo "        print(f'新增软件包数量: {self.stats["new_packages"]}')" >> sync_packages.py
-        echo "        print(f'更新软件包数量: {self.stats["updated_packages"]}')" >> sync_packages.py
-        echo "        print(f'跳过软件包数量: {self.stats["skipped_packages"]}')" >> sync_packages.py
+        echo '        print(f"原有软件包数量: {self.stats["initial_count"]}")' >> sync_packages.py
+        echo '        print(f"新增软件包数量: {self.stats["new_packages"]}")' >> sync_packages.py
+        echo '        print(f"更新软件包数量: {self.stats["updated_packages"]}")' >> sync_packages.py
+        echo '        print(f"跳过软件包数量: {self.stats["skipped_packages"]}")' >> sync_packages.py
         echo '        print(f"最终软件包数量: {len(self.package_versions)}")' >> sync_packages.py
         echo '        print("==================\n")' >> sync_packages.py
         echo '' >> sync_packages.py
