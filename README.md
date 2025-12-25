@@ -23,7 +23,7 @@
 ## 目录结构
 
 ```
-openwrt-packages-sync/
+openwrt-packages/
 ├── .github/
 │   └── workflows/
 │       └── sync-packages.yml  # GitHub Actions工作流配置
@@ -93,8 +93,8 @@ openwrt-packages-sync/
 ### 1. 克隆仓库
 
 ```bash
-git clone https://github.com/your-username/openwrt-packages-sync.git
-cd openwrt-packages-sync
+git clone --depth=1 https://github.com/JacksonJiangxh/openwrt-package.git jackson
+cd jackson
 ```
 
 ### 2. 安装依赖
