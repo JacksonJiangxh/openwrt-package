@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-xunlei
+hash: 4ff3c583a3d9d972af5ade268849fa4d
+version: 1.0
+release: 2

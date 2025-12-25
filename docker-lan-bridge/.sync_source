@@ -1,0 +1,5 @@
+repo: small-package
+package: docker-lan-bridge
+hash: bbd67c18e9cc491fd0d92494851f830a
+version: 1.0.1
+release: 1

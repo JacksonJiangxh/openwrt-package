@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-zdinnav
+hash: 0b2160f4438e13d62a638be9ee195ede
+version: 1.1.0
+release: 1

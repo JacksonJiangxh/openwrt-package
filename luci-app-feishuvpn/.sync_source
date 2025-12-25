@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-feishuvpn
+hash: 3d569ec2c81f089fa02738bbff0a966a
+version: 1.0.2-20240822
+release: 

@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-drawio
+hash: 551b6f578c8f6b54b39dc8e5cfb213ab
+version: 1.0.0-20240822
+release: 

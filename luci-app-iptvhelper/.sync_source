@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-iptvhelper
+hash: 3be0bc85ca0f1202a4e242d13ee167b7
+version: 0.1.1
+release: 2

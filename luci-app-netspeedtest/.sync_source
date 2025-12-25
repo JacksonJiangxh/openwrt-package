@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-netspeedtest
+hash: 97d91258b15cd944355b970097143634
+version: 5.1.0
+release: 20251108

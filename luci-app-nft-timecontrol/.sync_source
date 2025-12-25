@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-nft-timecontrol
+hash: 21903ce7063805b649c054c8d176f955
+version: 3.1.5
+release: 20251129

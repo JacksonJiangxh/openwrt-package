@@ -1,0 +1,5 @@
+repo: small-package
+package: openwrt-minieap
+hash: f1ad036ff6bd5258602049838c845e7e
+version: 0.92.1
+release: 4

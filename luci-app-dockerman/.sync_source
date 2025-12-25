@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-dockerman
+hash: 5478e69790da0413f33f36a275d0dba7
+version: v0.5.26
+release: 0

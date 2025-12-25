@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-excalidraw
+hash: d3ef7f96f19a3433edee54478592f491
+version: 1.0.0-20240822
+release: 

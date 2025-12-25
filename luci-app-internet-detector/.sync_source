@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-internet-detector
+hash: 32785778b350ba694726a249c45215a9
+version: 1.7.1
+release: 1

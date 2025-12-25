@@ -1,3 +1,5 @@
-repo: helloworld
+repo: small-package
 package: ipt2socks
-hash: 6ffe229cb85663830c1fd9017e232cd4
+hash: 652ef76651f7ee59fb271ffb55053d72
+version: 1.1.4
+release: 3

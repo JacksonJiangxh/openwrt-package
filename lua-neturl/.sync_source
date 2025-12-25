@@ -1,3 +1,5 @@
-repo: helloworld
+repo: small-package
 package: lua-neturl
-hash: aed1e32bd97aaf318deb23574f1b29e2
+hash: 675dd2abdac2552e64543b416939a291
+version: 1.2-1
+release: 1

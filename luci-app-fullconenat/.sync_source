@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-fullconenat
+hash: ebeb017e84b9c0aeceb83947c610829a
+version: 1.3
+release: 3

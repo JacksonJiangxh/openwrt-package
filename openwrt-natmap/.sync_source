@@ -1,0 +1,5 @@
+repo: small-package
+package: openwrt-natmap
+hash: e2cd16674ff93cb2215d6ebcc21eda02
+version: 20240813
+release: 3

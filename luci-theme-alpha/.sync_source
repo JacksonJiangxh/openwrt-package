@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-theme-alpha
+hash: 42d1e6d1fb25a861df2227765a0c8c6f
+version: 3.9.5-beta
+release: 10

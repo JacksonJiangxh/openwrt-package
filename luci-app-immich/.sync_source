@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-immich
+hash: 1acb50f32befcb55cdb9ed40ad60b3a3
+version: 1.0.2-20250321
+release: 

@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-udp2raw
+hash: 5b157e57c519fdc76c698faed0281bb9
+version: 1.0.0
+release: 4

@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-lib-taskd
+hash: 56c0f2b65d367571cc2579fec94adf3a
+version: 1.0.25
+release: 

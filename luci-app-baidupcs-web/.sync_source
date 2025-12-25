@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-baidupcs-web
+hash: 4f9b62410dc8ebf63e566fba4588051d
+version: 1.0
+release: 5

@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-netkeeper-interception
+hash: 06ae8ef1b8d9a0b1d4c5ee19eed545dc
+version: 0.1
+release: 1

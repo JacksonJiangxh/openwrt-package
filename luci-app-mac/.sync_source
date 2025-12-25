@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-mac
+hash: 5a8990acfa97b1aa30102800cdf4e4f2
+version: 4.2.1
+release: 4

@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-quickstart
+hash: 8e5a45354cd91bd0eaa5170d44796fbd
+version: 0.12.4-r2
+release: 

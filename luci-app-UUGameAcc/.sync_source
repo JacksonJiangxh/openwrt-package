@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-UUGameAcc
+hash: a5237f83c62f6d1ffa3446f91bccf952
+version: 2.13.4
+release: 20210806

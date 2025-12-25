@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-nginx-pingos
+hash: 9ebc5c68169b04748223767f722bd0eb
+version: 1.19.6
+release: 1

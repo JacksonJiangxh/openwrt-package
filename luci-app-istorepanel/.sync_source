@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-istorepanel
+hash: 893ba7f94d9f71a5e9b6cc1e792ef9f9
+version: 1.0.6-20250406
+release: 

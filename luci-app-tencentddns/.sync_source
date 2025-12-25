@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-tencentddns
+hash: 171db7af33ea11f0f6a08f6793d85c7c
+version: 0.2.0
+release: 1

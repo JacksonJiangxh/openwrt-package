@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-dae
+hash: 4d8bafd21fa16e6465ed00176b9887bb
+version: 0
+release: 0

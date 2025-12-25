@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-iperf3-server
+hash: 6848438e504bd997973998370983a9bf
+version: 2.0
+release: 4

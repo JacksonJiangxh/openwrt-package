@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-easymesh
+hash: c48e21108d6cb894ebd6e2b77c4418b4
+version: 2.0
+release: 0

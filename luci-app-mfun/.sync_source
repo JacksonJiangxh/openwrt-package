@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-mfun
+hash: 752ce52c016a9e1363b0df1687889b78
+version: 0.0.1
+release: 

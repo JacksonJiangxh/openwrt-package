@@ -1,0 +1,5 @@
+repo: small-package
+package: dnsforwarder
+hash: 87d84b29201ee80d5a781b6b944cb444
+version: 6.1.15
+release: 11

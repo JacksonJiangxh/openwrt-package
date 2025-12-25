@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-webviewdev
+hash: 8e54e157c66fdc17b4ae356a79ae9ed8
+version: 0.0.1
+release: 0

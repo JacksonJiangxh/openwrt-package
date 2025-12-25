@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-control-timewol
+hash: 0f561c5b45117ee58f6fe552af3f864a
+version: 1.1
+release: 1

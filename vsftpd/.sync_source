@@ -1,0 +1,5 @@
+repo: small-package
+package: vsftpd
+hash: 0f3a09d3aa47278b65ca8866180fa37f
+version: 3.0.5
+release: 6

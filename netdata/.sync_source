@@ -1,0 +1,5 @@
+repo: small-package
+package: netdata
+hash: 9e54c4f40e32402b3b8637f632ab430b
+version: 2.3.2
+release: 1

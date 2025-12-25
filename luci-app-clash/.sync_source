@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-clash
+hash: 9c0ce490e37fb6340945987435c28c7e
+version: v1.8.0
+release: 0

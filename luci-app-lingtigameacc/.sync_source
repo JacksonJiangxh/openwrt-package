@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-lingtigameacc
+hash: f8755c3b8a8e58d4be705d84481374d3
+version: 1.0.0
+release: 1

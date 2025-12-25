@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-multiaccountdial
+hash: 83deba4a79cfe4768370cbd6219944d5
+version: 2.2-2
+release: 

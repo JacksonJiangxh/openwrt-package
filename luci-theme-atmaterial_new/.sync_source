@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-theme-atmaterial_new
+hash: ee19271c79d7ea524ffa67c87671d982
+version: 1.2
+release: 2

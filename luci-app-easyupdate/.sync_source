@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-easyupdate
+hash: 6c17d397d341e520f0d21b699f86c1b5
+version: 1.0
+release: 20211125

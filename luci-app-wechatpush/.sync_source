@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-wechatpush
+hash: 1e1364b2afe987e968c90f4d29246632
+version: 3.6.10
+release: 

@@ -1,0 +1,5 @@
+repo: small-package
+package: UnblockNeteaseMusic-Go
+hash: 5ffdc30fbdd84bd1da28406b733e64e1
+version: 0.2.13
+release: $(AUTORELEASE)
