@@ -1,4 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-openvpn-client
 version: 20250227
-release: 1
+release: 5
