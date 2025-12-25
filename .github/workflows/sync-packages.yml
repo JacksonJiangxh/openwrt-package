@@ -350,7 +350,6 @@ jobs:
         echo '                update_needed = True' >> sync_packages.py
         echo '                print(f"同步新软件包: {package_name} (来自 {repo_name})，版本 {version}-{release}")' >> sync_packages.py
         echo '                self.stats["new_packages"] += 1' >> sync_packages.py
-        echo '        ' >> sync_packages.py
         echo '            if update_needed:' >> sync_packages.py
         echo '                # 复制软件包到输出目录' >> sync_packages.py
         echo '                dest_path = self.output_dir / package_name' >> sync_packages.py
@@ -371,7 +370,6 @@ jobs:
         echo '                    f.write(f"package: {package_name}\n")' >> sync_packages.py
         echo '                    f.write(f"version: {version}\n")' >> sync_packages.py
         echo '                    f.write(f"release: {release}\n")' >> sync_packages.py
-        echo '        ' >> sync_packages.py
         echo '    def run_sync(self):' >> sync_packages.py
         echo '        print("开始同步 OpenWrt 软件包...")' >> sync_packages.py
         echo '        ' >> sync_packages.py
@@ -389,10 +387,10 @@ jobs:
         echo '        print(f"同步完成！最终得到 {len(self.package_versions)} 个软件包")' >> sync_packages.py
         echo '        # 打印统计信息' >> sync_packages.py
         echo '        print("\n=== 同步统计信息 ===")' >> sync_packages.py
-        echo '        print(f"原有软件包数量: {self.stats['initial_count']}")' >> sync_packages.py
-        echo '        print(f"新增软件包数量: {self.stats['new_packages']}")' >> sync_packages.py
-        echo '        print(f"更新软件包数量: {self.stats['updated_packages']}")' >> sync_packages.py
-        echo '        print(f"跳过软件包数量: {self.stats['skipped_packages']}")' >> sync_packages.py
+        echo "        print(f'原有软件包数量: {self.stats["initial_count"]}')" >> sync_packages.py
+        echo "        print(f'新增软件包数量: {self.stats["new_packages"]}')" >> sync_packages.py
+        echo "        print(f'更新软件包数量: {self.stats["updated_packages"]}')" >> sync_packages.py
+        echo "        print(f'跳过软件包数量: {self.stats["skipped_packages"]}')" >> sync_packages.py
         echo '        print(f"最终软件包数量: {len(self.package_versions)}")' >> sync_packages.py
         echo '        print("==================\n")' >> sync_packages.py
         echo '' >> sync_packages.py
