@@ -1,0 +1,65 @@
+name: Sync OpenWrt Packages
+
+on:
+  # 定时执行，每天凌晨2点运行
+  schedule:
+    - cron: '0 2 * * *'
+  # 手动触发
+  workflow_dispatch:
+  # 当仓库有推送时触发
+  push:
+    branches: [ main ]
+
+jobs:
+  sync-packages:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install GitPython
+    
+    - name: Configure Git
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+    
+    - name: Run sync script
+      run: |
+        python sync_packages.py --work-dir ./temp_repos --output-dir .
+    
+    - name: Check for changes
+      id: check_changes
+      run: |
+        git status --porcelain
+        if git status --porcelain | grep -q "";
+        then
+          echo "changes_detected=true" >> $GITHUB_OUTPUT
+        else
+          echo "changes_detected=false" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Commit and push changes
+      if: steps.check_changes.outputs.changes_detected == 'true'
+      run: |
+        git add .
+        git reset -- ./.gitignore
+        git reset -- ./README.md
+        git reset -- ./sync_packages.py
+        git reset -- ./.github/
+        git commit -m "Sync packages from source repositories $(date -u +'%Y-%m-%d %H:%M:%S')"
+        git push origin main
+    
+    - name: Clean up
+      run: |
+        rm -rf ./temp_repos
