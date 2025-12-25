@@ -65,8 +65,8 @@ jobs:
         echo '    def __init__(self, work_dir, output_dir):' >> sync_packages.py
         echo '        self.work_dir = Path(work_dir)' >> sync_packages.py
         echo '        self.output_dir = Path(output_dir)' >> sync_packages.py
-        echo '        self.package_hashes = set()' >> sync_packages.py
         echo '        self.package_versions = {}' >> sync_packages.py
+        echo '        self.all_packages = []' >> sync_packages.py
         echo '        ' >> sync_packages.py
         echo '        self.work_dir.mkdir(parents=True, exist_ok=True)' >> sync_packages.py
         echo '        self.output_dir.mkdir(parents=True, exist_ok=True)' >> sync_packages.py
@@ -90,12 +90,9 @@ jobs:
         echo '                    version = pkg_info["PKG_VERSION"]' >> sync_packages.py
         echo '                    release = pkg_info["PKG_RELEASE"]' >> sync_packages.py
         echo '                    ' >> sync_packages.py
-        echo '                    pkg_hash = self._calculate_dir_hash(item)' >> sync_packages.py
-        echo '                    ' >> sync_packages.py
-        echo '                    if pkg_hash:' >> sync_packages.py
-        echo '                        self.package_versions[pkg_name] = (version, release)' >> sync_packages.py
-        echo '                        self.package_hashes.add(pkg_hash)' >> sync_packages.py
-        echo '                        print(f"发现已有软件包: {item.name} (版本: {version}-{release})")' >> sync_packages.py
+        echo '                    # 使用pkg_name作为键存储已有的软件包版本信息' >> sync_packages.py
+        echo '                    self.package_versions[pkg_name] = (version, release)' >> sync_packages.py
+        echo '                    print(f"发现已有软件包: {item.name} (pkg_name: {pkg_name}, 版本: {version}-{release})")' >> sync_packages.py
         echo '        ' >> sync_packages.py
         echo '        print(f"共扫描到 {len(self.package_versions)} 个已存在的软件包")' >> sync_packages.py
         echo '' >> sync_packages.py
@@ -165,22 +162,7 @@ jobs:
         echo '        ' >> sync_packages.py
         echo '        return result' >> sync_packages.py
         echo '' >> sync_packages.py
-        echo '    def _calculate_dir_hash(self, dir_path):' >> sync_packages.py
-        echo '        hasher = hashlib.md5()' >> sync_packages.py
-        echo '        ' >> sync_packages.py
-        echo '        try:' >> sync_packages.py
-        echo '            for root, _, files in os.walk(dir_path):' >> sync_packages.py
-        echo '                for file in sorted(files):' >> sync_packages.py
-        echo '                    file_path = os.path.join(root, file)' >> sync_packages.py
-        echo '                    if os.path.isfile(file_path):' >> sync_packages.py
-        echo '                        with open(file_path, "rb") as f:' >> sync_packages.py
-        echo '                            hasher.update(f.read())' >> sync_packages.py
-        echo '        except Exception as e:' >> sync_packages.py
-        echo '            print(f"计算目录 {dir_path} 哈希时出错: {e}")' >> sync_packages.py
-        echo '            return None' >> sync_packages.py
-        echo '        ' >> sync_packages.py
-        echo '        return hasher.hexdigest()' >> sync_packages.py
-        echo '' >> sync_packages.py
+
         echo '    def _clone_or_pull_repo(self, repo_name, repo_url, branch=None):' >> sync_packages.py
         echo '        repo_path = self.work_dir / repo_name' >> sync_packages.py
         echo '        ' >> sync_packages.py
@@ -214,63 +196,19 @@ jobs:
         echo '        makefile_path = package_path / "Makefile"' >> sync_packages.py
         echo '        ' >> sync_packages.py
         echo '        pkg_info = self._parse_makefile_version(makefile_path)' >> sync_packages.py
-        echo '        current_pkg_name = pkg_info["PKG_NAME"] or package_name' >> sync_packages.py
-        echo '        current_version = pkg_info["PKG_VERSION"]' >> sync_packages.py
-        echo '        current_release = pkg_info["PKG_RELEASE"]' >> sync_packages.py
+        echo '        pkg_name = pkg_info["PKG_NAME"] or package_name' >> sync_packages.py
+        echo '        version = pkg_info["PKG_VERSION"]' >> sync_packages.py
+        echo '        release = pkg_info["PKG_RELEASE"]' >> sync_packages.py
         echo '        ' >> sync_packages.py
-        echo '        package_hash = self._calculate_dir_hash(package_path)' >> sync_packages.py
-        echo '        if not package_hash:' >> sync_packages.py
-        echo '            return' >> sync_packages.py
-        echo '        ' >> sync_packages.py
-        echo '        if package_hash in self.package_hashes:' >> sync_packages.py
-        echo '            print(f"跳过已存在的软件包: {package_name} (来自 {repo_name})")' >> sync_packages.py
-        echo '            return' >> sync_packages.py
-        echo '        ' >> sync_packages.py
-        echo '        if current_pkg_name in self.package_versions:' >> sync_packages.py
-        echo '            existing_version, existing_release = self.package_versions[current_pkg_name]' >> sync_packages.py
-        echo '            ' >> sync_packages.py
-        echo '            ver_compare = self._compare_versions(current_version, existing_version)' >> sync_packages.py
-        echo '            ' >> sync_packages.py
-        echo '            if ver_compare == -2:' >> sync_packages.py
-        echo '                print(f"版本比较失败，保留已有软件包: {package_name} (来自 {repo_name})")' >> sync_packages.py
-        echo '                return' >> sync_packages.py
-        echo '            ' >> sync_packages.py
-        echo '            if ver_compare > 0:' >> sync_packages.py
-        echo '                print(f"更新软件包: {package_name} (来自 {repo_name})，版本 {existing_version} -> {current_version}")' >> sync_packages.py
-        echo '            elif ver_compare == 0:' >> sync_packages.py
-        echo '                rel_compare = self._compare_versions(current_release, existing_release)' >> sync_packages.py
-        echo '                ' >> sync_packages.py
-        echo '                if rel_compare == -2:' >> sync_packages.py
-        echo '                    print(f"Release 版本比较失败，保留已有软件包: {package_name} (来自 {repo_name})")' >> sync_packages.py
-        echo '                    return' >> sync_packages.py
-        echo '                    ' >> sync_packages.py
-        echo '                if rel_compare > 0:' >> sync_packages.py
-        echo '                    print(f"更新软件包: {package_name} (来自 {repo_name})，版本 {existing_version}-{existing_release} -> {current_version}-{current_release}")' >> sync_packages.py
-        echo '                else:' >> sync_packages.py
-        echo '                    print(f"跳过版本更低的软件包: {package_name} (来自 {repo_name})，现有版本 {existing_version}-{existing_release} >= 当前版本 {current_version}-{current_release}")' >> sync_packages.py
-        echo '                    return' >> sync_packages.py
-        echo '            else:' >> sync_packages.py
-        echo '                print(f"跳过版本更低的软件包: {package_name} (来自 {repo_name})，现有版本 {existing_version} >= 当前版本 {current_version}")' >> sync_packages.py
-        echo '                return' >> sync_packages.py
-        echo '        else:' >> sync_packages.py
-        echo '            print(f"同步软件包: {package_name} (来自 {repo_name})，版本 {current_version}-{current_release}")' >> sync_packages.py
-        echo '        ' >> sync_packages.py
-        echo '        self.package_versions[current_pkg_name] = (current_version, current_release)' >> sync_packages.py
-        echo '        self.package_hashes.add(package_hash)' >> sync_packages.py
-        echo '        ' >> sync_packages.py
-        echo '        dest_path = self.output_dir / package_name' >> sync_packages.py
-        echo '        ' >> sync_packages.py
-        echo '        if dest_path.exists():' >> sync_packages.py
-        echo '            shutil.rmtree(dest_path)' >> sync_packages.py
-        echo '        ' >> sync_packages.py
-        echo '        shutil.copytree(package_path, dest_path)' >> sync_packages.py
-        echo '        ' >> sync_packages.py
-        echo '        with open(dest_path / ".sync_source", "w", encoding="utf-8") as f:' >> sync_packages.py
-        echo '            f.write(f"repo: {repo_name}\n")' >> sync_packages.py
-        echo '            f.write(f"package: {package_name}\n")' >> sync_packages.py
-        echo '            f.write(f"hash: {package_hash}\n")' >> sync_packages.py
-        echo '            f.write(f"version: {current_version}\n")' >> sync_packages.py
-        echo '            f.write(f"release: {current_release}\n")' >> sync_packages.py
+        echo '        # 收集软件包信息，不直接复制' >> sync_packages.py
+        echo '        self.all_packages.append({' >> sync_packages.py
+        echo '            "name": package_name,' >> sync_packages.py
+        echo '            "pkg_name": pkg_name,' >> sync_packages.py
+        echo '            "version": version,' >> sync_packages.py
+        echo '            "release": release,' >> sync_packages.py
+        echo '            "path": package_path,' >> sync_packages.py
+        echo '            "repo_name": repo_name' >> sync_packages.py
+        echo '        })' >> sync_packages.py
         echo '' >> sync_packages.py
         echo '    def _find_all_package_dirs(self, root_path):' >> sync_packages.py
         echo '        package_dirs = []' >> sync_packages.py
@@ -300,18 +238,129 @@ jobs:
         echo '        for package_path in package_dirs:' >> sync_packages.py
         echo '            self.sync_package(package_path, repo_name)' >> sync_packages.py
         echo '' >> sync_packages.py
+        echo '    def _process_all_packages(self):' >> sync_packages.py
+        echo '        """处理所有收集到的软件包，进行去重和版本比较，然后统一复制"""' >> sync_packages.py
+        echo '        print(f"共收集到 {len(self.all_packages)} 个软件包，开始统一处理...")' >> sync_packages.py
+        echo '        ' >> sync_packages.py
+        echo '        # 去重并保留每个包名的最新版本' >> sync_packages.py
+        echo '        best_packages = {}' >> sync_packages.py
+        echo '        ' >> sync_packages.py
+        echo '        for pkg in self.all_packages:' >> sync_packages.py
+        echo '            pkg_name = pkg["pkg_name"]' >> sync_packages.py
+        echo '            version = pkg["version"]' >> sync_packages.py
+        echo '            release = pkg["release"]' >> sync_packages.py
+        echo '            ' >> sync_packages.py
+        echo '            # 检查是否已存在该包名' >> sync_packages.py
+        echo '            if pkg_name not in best_packages:' >> sync_packages.py
+        echo '                # 如果不存在，直接添加' >> sync_packages.py
+        echo '                best_packages[pkg_name] = pkg' >> sync_packages.py
+        echo '            else:' >> sync_packages.py
+        echo '                # 如果已存在，比较版本' >> sync_packages.py
+        echo '                existing = best_packages[pkg_name]' >> sync_packages.py
+        echo '                existing_version = existing["version"]' >> sync_packages.py
+        echo '                existing_release = existing["release"]' >> sync_packages.py
+        echo '                ' >> sync_packages.py
+        echo '                # 比较主版本' >> sync_packages.py
+        echo '                ver_compare = self._compare_versions(version, existing_version)' >> sync_packages.py
+        echo '                ' >> sync_packages.py
+        echo '                # 版本比较失败，保留已有的包' >> sync_packages.py
+        echo '                if ver_compare == -2:' >> sync_packages.py
+        echo '                    continue' >> sync_packages.py
+        echo '                ' >> sync_packages.py
+        echo '                # 如果当前版本更高，更新' >> sync_packages.py
+        echo '                if ver_compare > 0:' >> sync_packages.py
+        echo '                    best_packages[pkg_name] = pkg' >> sync_packages.py
+        echo '                elif ver_compare == 0:' >> sync_packages.py
+        echo '                    # 主版本相同，比较 release 版本' >> sync_packages.py
+        echo '                    rel_compare = self._compare_versions(release, existing_release)' >> sync_packages.py
+        echo '                    # release 版本比较失败，保留已有的包' >> sync_packages.py
+        echo '                    if rel_compare == -2:' >> sync_packages.py
+        echo '                        continue' >> sync_packages.py
+        echo '                    # 如果当前 release 版本更高，更新' >> sync_packages.py
+        echo '                    if rel_compare > 0:' >> sync_packages.py
+        echo '                        best_packages[pkg_name] = pkg' >> sync_packages.py
+        echo '        ' >> sync_packages.py
+        echo '        print(f"去重后得到 {len(best_packages)} 个软件包")' >> sync_packages.py
+        echo '        ' >> sync_packages.py
+        echo '        # 复制最佳版本的软件包到输出目录' >> sync_packages.py
+        echo '        for pkg in best_packages.values():' >> sync_packages.py
+        echo '            package_path = pkg["path"]' >> sync_packages.py
+        echo '            package_name = pkg["name"]' >> sync_packages.py
+        echo '            repo_name = pkg["repo_name"]' >> sync_packages.py
+        echo '            version = pkg["version"]' >> sync_packages.py
+        echo '            release = pkg["release"]' >> sync_packages.py
+        echo '            ' >> sync_packages.py
+        echo '            # 检查是否需要更新已存在的包' >> sync_packages.py
+        echo '            update_needed = False' >> sync_packages.py
+        echo '            ' >> sync_packages.py
+        echo '            # 使用pkg_name进行对比，确保同一个软件包即使目录名不同也能正确比较' >> sync_packages.py
+        echo '            if pkg_name in self.package_versions:' >> sync_packages.py
+        echo '                existing_version, existing_release = self.package_versions[pkg_name]' >> sync_packages.py
+        echo '                ver_compare = self._compare_versions(version, existing_version)' >> sync_packages.py
+        echo '                ' >> sync_packages.py
+        echo '                if ver_compare == -2:' >> sync_packages.py
+        echo '                    print(f"版本比较失败，跳过软件包: {package_name} (来自 {repo_name})")' >> sync_packages.py
+        echo '                    continue' >> sync_packages.py
+        echo '                ' >> sync_packages.py
+        echo '                if ver_compare > 0:' >> sync_packages.py
+        echo '                    update_needed = True' >> sync_packages.py
+        echo '                    print(f"更新软件包: {package_name} (来自 {repo_name})，版本 {existing_version} -> {version}")' >> sync_packages.py
+        echo '                elif ver_compare == 0:' >> sync_packages.py
+        echo '                    rel_compare = self._compare_versions(release, existing_release)' >> sync_packages.py
+        echo '                    ' >> sync_packages.py
+        echo '                    if rel_compare == -2:' >> sync_packages.py
+        echo '                        print(f"Release 版本比较失败，跳过软件包: {package_name} (来自 {repo_name})")' >> sync_packages.py
+        echo '                        continue' >> sync_packages.py
+        echo '                    ' >> sync_packages.py
+        echo '                    if rel_compare > 0:' >> sync_packages.py
+        echo '                        update_needed = True' >> sync_packages.py
+        echo '                        print(f"更新软件包: {package_name} (来自 {repo_name})，版本 {existing_version}-{existing_release} -> {version}-{release}")' >> sync_packages.py
+        echo '                    else:' >> sync_packages.py
+        echo '                        print(f"跳过版本更低的软件包: {package_name} (来自 {repo_name})")' >> sync_packages.py
+        echo '                        continue' >> sync_packages.py
+        echo '                else:' >> sync_packages.py
+        echo '                    print(f"跳过版本更低的软件包: {package_name} (来自 {repo_name})")' >> sync_packages.py
+        echo '                    continue' >> sync_packages.py
+        echo '            else:' >> sync_packages.py
+        echo '                update_needed = True' >> sync_packages.py
+        echo '                print(f"同步新软件包: {package_name} (来自 {repo_name})，版本 {version}-{release}")' >> sync_packages.py
+        echo '        ' >> sync_packages.py
+        echo '            if update_needed:' >> sync_packages.py
+        echo '                # 复制软件包到输出目录' >> sync_packages.py
+        echo '                dest_path = self.output_dir / package_name' >> sync_packages.py
+        echo '                ' >> sync_packages.py
+        echo '                # 如果目标目录已存在，先删除' >> sync_packages.py
+        echo '                if dest_path.exists():' >> sync_packages.py
+        echo '                    shutil.rmtree(dest_path)' >> sync_packages.py
+        echo '                ' >> sync_packages.py
+        echo '                # 复制软件包目录' >> sync_packages.py
+        echo '                shutil.copytree(package_path, dest_path)' >> sync_packages.py
+        echo '                ' >> sync_packages.py
+        echo '                # 更新版本记录，使用pkg_name作为键' >> sync_packages.py
+        echo '                self.package_versions[pkg_name] = (version, release)' >> sync_packages.py
+        echo '                ' >> sync_packages.py
+        echo '                # 添加源仓库信息文件' >> sync_packages.py
+        echo '                with open(dest_path / ".sync_source", "w", encoding="utf-8") as f:' >> sync_packages.py
+        echo '                    f.write(f"repo: {repo_name}\n")' >> sync_packages.py
+        echo '                    f.write(f"package: {package_name}\n")' >> sync_packages.py
+        echo '                    f.write(f"version: {version}\n")' >> sync_packages.py
+        echo '                    f.write(f"release: {release}\n")' >> sync_packages.py
+        echo '        ' >> sync_packages.py
         echo '    def run_sync(self):' >> sync_packages.py
         echo '        print("开始同步 OpenWrt 软件包...")' >> sync_packages.py
         echo '        ' >> sync_packages.py
+        echo '        # 第一步：从所有仓库收集软件包信息' >> sync_packages.py
         echo '        for repo_name, repo_config in SOURCE_REPOS.items():' >> sync_packages.py
         echo '            try:' >> sync_packages.py
         echo '                self.sync_from_repo(repo_name, repo_config)' >> sync_packages.py
         echo '            except Exception as e:' >> sync_packages.py
         echo '                print(f"同步仓库 {repo_name} 时出错: {e}")' >> sync_packages.py
         echo '        ' >> sync_packages.py
-        echo '        print(f"同步完成！共同步 {len(self.package_hashes)} 个软件包")' >> sync_packages.py
+        echo '        # 第二步：统一处理所有收集到的软件包' >> sync_packages.py
+        echo '        self._process_all_packages()' >> sync_packages.py
+        echo '        ' >> sync_packages.py
+        echo '        print(f"同步完成！最终得到 {len(self.package_versions)} 个软件包")' >> sync_packages.py
         echo '        print(f"同步结果存储在: {self.output_dir}")' >> sync_packages.py
-        echo '        print(f"已处理 {len(self.package_versions)} 个包名，采用累增同步模式，保留现有包")' >> sync_packages.py
         echo '' >> sync_packages.py
         echo 'def main():' >> sync_packages.py
         echo '    parser = argparse.ArgumentParser(description="OpenWrt 软件包同步脚本")' >> sync_packages.py
