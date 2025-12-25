@@ -1,5 +1,13 @@
 name: Sync OpenWrt Packages
 
+# 上游源配置 - 在此处添加或删除源仓库
+# 格式：REPO_NAME1:URL1,REPO_NAME2:URL2
+env:
+  SOURCE_REPOS: |
+    small-package:https://github.com/kenzok8/small-package.git
+    helloworld:https://github.com/fw876/helloworld.git
+    modem_feeds:https://github.com/FUjr/modem_feeds.git
+
 on:
   # 定时执行，每天凌晨2点运行
   schedule:
@@ -49,17 +57,15 @@ jobs:
         echo 'import argparse' >> sync_packages.py
         echo 'from pathlib import Path' >> sync_packages.py
         echo '' >> sync_packages.py
-        echo 'SOURCE_REPOS = {' >> sync_packages.py
-        echo '    "small-package": {' >> sync_packages.py
-        echo '        "url": "https://github.com/kenzok8/small-package.git"' >> sync_packages.py
-        echo '    },' >> sync_packages.py
-        echo '    "helloworld": {' >> sync_packages.py
-        echo '        "url": "https://github.com/fw876/helloworld.git"' >> sync_packages.py
-        echo '    },' >> sync_packages.py
-        echo '    "modem_feeds": {' >> sync_packages.py
-        echo '        "url": "https://github.com/FUjr/modem_feeds.git"' >> sync_packages.py
-        echo '    }' >> sync_packages.py
-        echo '}' >> sync_packages.py
+        echo '# 从环境变量读取上游源配置' >> sync_packages.py
+        echo 'SOURCE_REPOS = {}' >> sync_packages.py
+        echo 'if os.environ.get("SOURCE_REPOS"):' >> sync_packages.py
+        echo '    for line in os.environ["SOURCE_REPOS"].strip().split("\n"):' >> sync_packages.py
+        echo '        line = line.strip()' >> sync_packages.py
+        echo '        if line and not line.startswith("#"):' >> sync_packages.py
+        echo '            if ":" in line:' >> sync_packages.py
+        echo '                repo_name, repo_url = line.split(":", 1)' >> sync_packages.py
+        echo '                SOURCE_REPOS[repo_name.strip()] = {"url": repo_url.strip()}' >> sync_packages.py
         echo '' >> sync_packages.py
         echo 'class PackageSyncer:' >> sync_packages.py
         echo '    def __init__(self, work_dir, output_dir):' >> sync_packages.py
