@@ -177,6 +177,7 @@ jobs:
         echo '                        result["PKG_RELEASE"] = line.split(":=")[1].strip()' >> sync_packages.py
         echo '        except Exception as e:' >> sync_packages.py
         echo '            # 解析Makefile错误时不打印详细信息' >> sync_packages.py
+        echo '            pass' >> sync_packages.py
         echo '        ' >> sync_packages.py
         echo '        return result' >> sync_packages.py
         echo '' >> sync_packages.py
