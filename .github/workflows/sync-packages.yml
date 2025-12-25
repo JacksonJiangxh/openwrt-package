@@ -3,15 +3,19 @@ name: Sync OpenWrt Packages
 # 上游源配置 - 在此处添加或删除源仓库
 # 格式：REPO_NAME1:URL1,REPO_NAME2:URL2
 env:
+  # 设置北京时间时区
+  TZ: Asia/Shanghai
   SOURCE_REPOS: |
     small-package:https://github.com/kenzok8/small-package.git
     helloworld:https://github.com/fw876/helloworld.git
-    modem_feeds:https://github.com/FUjr/modem_feeds.git
+    qmodem:https://github.com/FUjr/modem_feeds.git
+    kiddin9:https://github.com/kiddin9/kwrt-packages.git
+
 
 on:
-  # 定时执行，每天凌晨2点运行
+  # 定时执行，每天北京时间凌晨2点运行（对应UTC时间18点）
   schedule:
-    - cron: '0 2 * * *'
+    - cron: '0 18 * * *'
   # 手动触发
   workflow_dispatch:
   # 当仓库有推送时触发
@@ -74,14 +78,22 @@ jobs:
         echo '        self.package_versions = {}' >> sync_packages.py
         echo '        self.all_packages = []' >> sync_packages.py
         echo '        ' >> sync_packages.py
+        echo '        # 统计变量' >> sync_packages.py
+        echo '        self.stats = {' >> sync_packages.py
+        echo '            "initial_count": 0,' >> sync_packages.py
+        echo '            "new_packages": 0,' >> sync_packages.py
+        echo '            "updated_packages": 0,' >> sync_packages.py
+        echo '            "skipped_packages": 0' >> sync_packages.py
+        echo '        }' >> sync_packages.py
+        echo '        ' >> sync_packages.py
         echo '        self.work_dir.mkdir(parents=True, exist_ok=True)' >> sync_packages.py
         echo '        self.output_dir.mkdir(parents=True, exist_ok=True)' >> sync_packages.py
         echo '        ' >> sync_packages.py
         echo '        self._scan_existing_packages()' >> sync_packages.py
+        echo '        self.stats["initial_count"] = self.initial_package_count' >> sync_packages.py
         echo '' >> sync_packages.py
         echo '    def _scan_existing_packages(self):' >> sync_packages.py
-        echo '        print("扫描仓库中已有的软件包...")' >> sync_packages.py
-        echo '        ' >> sync_packages.py
+        echo '        # 扫描仓库中已有的软件包 - 仅输出统计信息' >> sync_packages.py
         echo '        keep_items = [".git", ".github", ".gitignore", "README.md", "sync_packages.py", "temp_repos"]' >> sync_packages.py
         echo '        ' >> sync_packages.py
         echo '        for item in self.output_dir.iterdir():' >> sync_packages.py
@@ -98,9 +110,9 @@ jobs:
         echo '                    ' >> sync_packages.py
         echo '                    # 使用pkg_name作为键存储已有的软件包版本信息' >> sync_packages.py
         echo '                    self.package_versions[pkg_name] = (version, release)' >> sync_packages.py
-        echo '                    print(f"发现已有软件包: {item.name} (pkg_name: {pkg_name}, 版本: {version}-{release})")' >> sync_packages.py
         echo '        ' >> sync_packages.py
-        echo '        print(f"共扫描到 {len(self.package_versions)} 个已存在的软件包")' >> sync_packages.py
+        echo '        # 记录初始软件包数量，用于后续统计' >> sync_packages.py
+        echo '        self.initial_package_count = len(self.package_versions)' >> sync_packages.py
         echo '' >> sync_packages.py
         echo '    def _compare_versions(self, ver1, ver2):' >> sync_packages.py
         echo '        try:' >> sync_packages.py
@@ -143,7 +155,7 @@ jobs:
         echo '            else:' >> sync_packages.py
         echo '                return 0' >> sync_packages.py
         echo '        except Exception as e:' >> sync_packages.py
-        echo '            print(f"版本比较失败: {ver1} vs {ver2}, 错误: {e}")' >> sync_packages.py
+        echo '            # 版本比较失败时不打印详细信息' >> sync_packages.py
         echo '            return -2' >> sync_packages.py
         echo '' >> sync_packages.py
         echo '    def _parse_makefile_version(self, makefile_path):' >> sync_packages.py
@@ -164,7 +176,7 @@ jobs:
         echo '                    elif line.startswith("PKG_RELEASE:="):' >> sync_packages.py
         echo '                        result["PKG_RELEASE"] = line.split(":=")[1].strip()' >> sync_packages.py
         echo '        except Exception as e:' >> sync_packages.py
-        echo '            print(f"解析 Makefile {makefile_path} 时出错: {e}")' >> sync_packages.py
+        echo '            # 解析Makefile错误时不打印详细信息' >> sync_packages.py
         echo '        ' >> sync_packages.py
         echo '        return result' >> sync_packages.py
         echo '' >> sync_packages.py
@@ -173,7 +185,7 @@ jobs:
         echo '        repo_path = self.work_dir / repo_name' >> sync_packages.py
         echo '        ' >> sync_packages.py
         echo '        if repo_path.exists():' >> sync_packages.py
-        echo '            print(f"更新仓库: {repo_name}")' >> sync_packages.py
+        echo '            # 更新仓库时不打印日志' >> sync_packages.py
         echo '            repo = git.Repo(repo_path)' >> sync_packages.py
         echo '            origin = repo.remotes.origin' >> sync_packages.py
         echo '            if branch:' >> sync_packages.py
@@ -181,7 +193,7 @@ jobs:
         echo '            else:' >> sync_packages.py
         echo '                origin.pull()' >> sync_packages.py
         echo '        else:' >> sync_packages.py
-        echo '            print(f"克隆仓库: {repo_name}")' >> sync_packages.py
+        echo '            # 克隆仓库时不打印日志' >> sync_packages.py
         echo '            clone_options = {' >> sync_packages.py
         echo '                "depth": 1,' >> sync_packages.py
         echo '                "single_branch": True' >> sync_packages.py
@@ -246,7 +258,7 @@ jobs:
         echo '' >> sync_packages.py
         echo '    def _process_all_packages(self):' >> sync_packages.py
         echo '        """处理所有收集到的软件包，进行去重和版本比较，然后统一复制"""' >> sync_packages.py
-        echo '        print(f"共收集到 {len(self.all_packages)} 个软件包，开始统一处理...")' >> sync_packages.py
+        echo '        # 不打印收集到的软件包数量，减少冗余日志' >> sync_packages.py
         echo '        ' >> sync_packages.py
         echo '        # 去重并保留每个包名的最新版本' >> sync_packages.py
         echo '        best_packages = {}' >> sync_packages.py
@@ -286,7 +298,7 @@ jobs:
         echo '                    if rel_compare > 0:' >> sync_packages.py
         echo '                        best_packages[pkg_name] = pkg' >> sync_packages.py
         echo '        ' >> sync_packages.py
-        echo '        print(f"去重后得到 {len(best_packages)} 个软件包")' >> sync_packages.py
+        echo '        # 不去重后的软件包数量，减少冗余日志' >> sync_packages.py
         echo '        ' >> sync_packages.py
         echo '        # 复制最佳版本的软件包到输出目录' >> sync_packages.py
         echo '        for pkg in best_packages.values():' >> sync_packages.py
@@ -306,30 +318,37 @@ jobs:
         echo '                ' >> sync_packages.py
         echo '                if ver_compare == -2:' >> sync_packages.py
         echo '                    print(f"版本比较失败，跳过软件包: {package_name} (来自 {repo_name})")' >> sync_packages.py
+        echo '                    self.stats["skipped_packages"] += 1' >> sync_packages.py
         echo '                    continue' >> sync_packages.py
         echo '                ' >> sync_packages.py
         echo '                if ver_compare > 0:' >> sync_packages.py
         echo '                    update_needed = True' >> sync_packages.py
         echo '                    print(f"更新软件包: {package_name} (来自 {repo_name})，版本 {existing_version} -> {version}")' >> sync_packages.py
+        echo '                    self.stats["updated_packages"] += 1' >> sync_packages.py
         echo '                elif ver_compare == 0:' >> sync_packages.py
         echo '                    rel_compare = self._compare_versions(release, existing_release)' >> sync_packages.py
         echo '                    ' >> sync_packages.py
         echo '                    if rel_compare == -2:' >> sync_packages.py
         echo '                        print(f"Release 版本比较失败，跳过软件包: {package_name} (来自 {repo_name})")' >> sync_packages.py
+        echo '                        self.stats["skipped_packages"] += 1' >> sync_packages.py
         echo '                        continue' >> sync_packages.py
         echo '                    ' >> sync_packages.py
         echo '                    if rel_compare > 0:' >> sync_packages.py
         echo '                        update_needed = True' >> sync_packages.py
         echo '                        print(f"更新软件包: {package_name} (来自 {repo_name})，版本 {existing_version}-{existing_release} -> {version}-{release}")' >> sync_packages.py
+        echo '                        self.stats["updated_packages"] += 1' >> sync_packages.py
         echo '                    else:' >> sync_packages.py
         echo '                        print(f"跳过版本更低的软件包: {package_name} (来自 {repo_name})")' >> sync_packages.py
+        echo '                        self.stats["skipped_packages"] += 1' >> sync_packages.py
         echo '                        continue' >> sync_packages.py
         echo '                else:' >> sync_packages.py
         echo '                    print(f"跳过版本更低的软件包: {package_name} (来自 {repo_name})")' >> sync_packages.py
+        echo '                    self.stats["skipped_packages"] += 1' >> sync_packages.py
         echo '                    continue' >> sync_packages.py
         echo '            else:' >> sync_packages.py
         echo '                update_needed = True' >> sync_packages.py
         echo '                print(f"同步新软件包: {package_name} (来自 {repo_name})，版本 {version}-{release}")' >> sync_packages.py
+        echo '                self.stats["new_packages"] += 1' >> sync_packages.py
         echo '        ' >> sync_packages.py
         echo '            if update_needed:' >> sync_packages.py
         echo '                # 复制软件包到输出目录' >> sync_packages.py
@@ -360,13 +379,21 @@ jobs:
         echo '            try:' >> sync_packages.py
         echo '                self.sync_from_repo(repo_name, repo_config)' >> sync_packages.py
         echo '            except Exception as e:' >> sync_packages.py
-        echo '                print(f"同步仓库 {repo_name} 时出错: {e}")' >> sync_packages.py
+        echo '                # 同步仓库出错时不打印详细日志，减少冗余' >> sync_packages.py
+        echo '                pass' >> sync_packages.py
         echo '        ' >> sync_packages.py
         echo '        # 第二步：统一处理所有收集到的软件包' >> sync_packages.py
         echo '        self._process_all_packages()' >> sync_packages.py
         echo '        ' >> sync_packages.py
         echo '        print(f"同步完成！最终得到 {len(self.package_versions)} 个软件包")' >> sync_packages.py
-        echo '        print(f"同步结果存储在: {self.output_dir}")' >> sync_packages.py
+        echo '        # 打印统计信息' >> sync_packages.py
+        echo '        print("\n=== 同步统计信息 ===")' >> sync_packages.py
+        echo '        print(f"原有软件包数量: {self.stats["initial_count"]}")' >> sync_packages.py
+        echo '        print(f"新增软件包数量: {self.stats["new_packages"]}")' >> sync_packages.py
+        echo '        print(f"更新软件包数量: {self.stats["updated_packages"]}")' >> sync_packages.py
+        echo '        print(f"跳过软件包数量: {self.stats["skipped_packages"]}")' >> sync_packages.py
+        echo '        print(f"最终软件包数量: {len(self.package_versions)}")' >> sync_packages.py
+        echo '        print("==================\n")' >> sync_packages.py
         echo '' >> sync_packages.py
         echo 'def main():' >> sync_packages.py
         echo '    parser = argparse.ArgumentParser(description="OpenWrt 软件包同步脚本")' >> sync_packages.py
@@ -412,7 +439,7 @@ jobs:
         git reset -- ./README.md
         git reset -- ./sync_packages.py
         git reset -- ./.github/
-        git commit -m "Sync packages from source repositories $(date -u +'%Y-%m-%d %H:%M:%S')"
+        git commit -m "Sync packages from source repositories $(date +'%Y-%m-%d %H:%M:%S')"
         git push origin main
     
     - name: Clean up
