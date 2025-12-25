@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-kodexplorer
+hash: bc00ea95d86a544416bbbaf92d73f22d
+version: 20220109
+release: 1

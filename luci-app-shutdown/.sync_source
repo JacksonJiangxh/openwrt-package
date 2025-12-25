@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-shutdown
+hash: 34d21f9f6ebf2553e4d85e0acf288f11
+version: 1.0
+release: 1

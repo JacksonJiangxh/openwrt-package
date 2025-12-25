@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-pve
+hash: 10b031b0a20ab015e2c87fd600e67476
+version: 8.3.2-20250106
+release: 

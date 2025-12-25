@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-theme-argon
+hash: 04bdd3705f6fb8108183d3fd58f57ef0
+version: 2.4.3
+release: 20250722

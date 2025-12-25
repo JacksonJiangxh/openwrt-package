@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-control-weburl
+hash: e889fb765ab2c77f23d9714731c5e368
+version: 1.1
+release: 1

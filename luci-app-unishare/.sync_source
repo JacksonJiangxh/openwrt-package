@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-unishare
+hash: 25f928d897b7b65b1fa428b990bfe69e
+version: 1.0.2-r1
+release: 

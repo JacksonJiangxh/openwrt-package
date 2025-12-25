@@ -1,0 +1,5 @@
+repo: small-package
+package: libtorrent-rasterbar
+hash: 2f9f5804901d22356a5558f9b00346da
+version: 2.0.11
+release: 2

@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-gecoosac
+hash: aa4dd2e435e8ac62b095f77939dbbf9a
+version: 1.0.1
+release: 1

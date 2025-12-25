@@ -1,0 +1,5 @@
+repo: small-package
+package: miniupnpd-iptables
+hash: dbabd81181b469fd2cf645ac78282da1
+version: 2.0.20170421
+release: 3

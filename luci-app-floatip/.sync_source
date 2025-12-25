@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-floatip
+hash: 1be139aa7d086f8c228a84325a450e2a
+version: 0.1.3-r2
+release: 

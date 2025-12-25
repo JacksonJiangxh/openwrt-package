@@ -1,0 +1,5 @@
+repo: small-package
+package: cgroupfs-mount
+hash: cea45f86a9aec5102cc4ed42107a678a
+version: 0
+release: 2

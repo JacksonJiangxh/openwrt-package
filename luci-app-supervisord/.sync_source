@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-supervisord
+hash: c583c83f84fa689582802713f72033ad
+version: 1.0
+release: 20211102

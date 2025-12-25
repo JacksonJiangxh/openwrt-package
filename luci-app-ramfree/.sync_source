@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-ramfree
+hash: 4c7ea6d381a6cfaea3fb0ca581a1a2a7
+version: 1.0
+release: 1

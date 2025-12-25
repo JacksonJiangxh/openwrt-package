@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-istoreenhance
+hash: 9803221b3b0ebc1bb65f31f2f8436c16
+version: 0.4.1-r2
+release: 

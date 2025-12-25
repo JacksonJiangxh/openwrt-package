@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-adguardhome
+hash: f807daba1f74712e8668ef64c283ceb7
+version: 0
+release: 0

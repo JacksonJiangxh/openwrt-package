@@ -1,0 +1,5 @@
+repo: modem_feeds
+package: quectel_CM_5G_M
+hash: 40f18e74724df4f099c97908a3165c4c
+version: $(QMODEM_VERSION)
+release: $(AUTORELEASE)

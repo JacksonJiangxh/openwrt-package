@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-wifidog
+hash: 951420609dab710dd6d27115698fa711
+version: 2.0
+release: 2

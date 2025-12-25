@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-my-dnshelper
+hash: a68269e83d8aa399595657e8cf7e2e18
+version: 0
+release: 0

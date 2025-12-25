@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-oled
+hash: b4d731ee7bc7fccc094e194c660c226d
+version: 20230823
+release: 1

@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-ubuntu
+hash: aa3a9483e6f5fcd0a0b1df52f419f635
+version: 1.1.1-20240822
+release: 

@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-snmpd
+hash: 6dd43863bb34904afee8e16a1ce0164a
+version: 0
+release: 0

@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-owntone
+hash: bc9236d7fe7a9fc793d5e481e02e4f14
+version: 1.0.2-20240822
+release: 

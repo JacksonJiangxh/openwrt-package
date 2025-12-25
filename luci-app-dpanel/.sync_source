@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-dpanel
+hash: 59ad079fed95d4ea277db2b5c38479db
+version: 1.0.0-20251009
+release: 

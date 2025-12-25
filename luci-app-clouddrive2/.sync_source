@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-clouddrive2
+hash: 4497d360adb434f3745894ea862af531
+version: 1.0.1-20240822
+release: 

@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-proto-netkeeper
+hash: 43959324346ede8e6300f56b3792141f
+version: 1.3
+release: 3

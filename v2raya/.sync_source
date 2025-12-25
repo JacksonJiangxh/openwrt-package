@@ -1,3 +1,5 @@
-repo: helloworld
+repo: small-package
 package: v2raya
-hash: 63fdb439812e3d0e186f482596b9cb9c
+hash: d2d25263d874735ce85dbb92f36134ba
+version: 2.2.7.4
+release: 1

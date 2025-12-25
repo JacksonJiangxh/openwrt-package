@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-ipsec-server
+hash: ad3a7cc871bea9489ac57e3b41aae924
+version: 20211223
+release: 4

@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-usb3disable
+hash: fb258e3472537bd8b344295cc5f04e08
+version: 1.0
+release: 1

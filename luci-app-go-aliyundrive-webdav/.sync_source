@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-go-aliyundrive-webdav
+hash: 56c568a66c4d6a4cd3faa0767b73b033
+version: 1.0.2
+release: 20211031

@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-chatgpt-web
+hash: 33ef43a11c89fb3d3a9f1647ef3974f1
+version: 1.2.1
+release: 16

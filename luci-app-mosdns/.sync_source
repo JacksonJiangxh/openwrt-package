@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-mosdns
+hash: 832abd1dd3e7eb95610d19bcb2702cf9
+version: 1.6.16
+release: 1

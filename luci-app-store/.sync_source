@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-store
+hash: f09f9a6b6fba1e557ad4f21debf0a5ec
+version: 0.1.32-1
+release: 

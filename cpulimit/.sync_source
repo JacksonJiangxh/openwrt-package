@@ -1,0 +1,5 @@
+repo: small-package
+package: cpulimit
+hash: c99a553a13bbf77777b35f35344077a9
+version: 0.3.2
+release: 2

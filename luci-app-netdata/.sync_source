@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-netdata
+hash: 7db8e5ae8c4d33c5d94e362468c86a55
+version: 2.0.4
+release: 20251106

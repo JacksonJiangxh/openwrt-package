@@ -1,0 +1,5 @@
+repo: modem_feeds
+package: luci-app-qmodem-ttl
+hash: 82b02a605221235636a3913c79afc0f0
+version: $(QMODEM_VERSION)
+release: 0

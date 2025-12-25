@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-ssr-mudb-server
+hash: 957d528c6c63fb6ca423c5dbc260d87f
+version: 11
+release: 0

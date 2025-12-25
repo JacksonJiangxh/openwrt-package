@@ -1,0 +1,5 @@
+repo: small-package
+package: dnsmasq
+hash: 389764ad80a6d76df0e2a88e33c97687
+version: $(subst test,~~test,$(subst rc,~rc,$(PKG_UPSTREAM_VERSION)))
+release: 4

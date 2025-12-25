@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-subconverter
+hash: 0b973c3da352dc11a088fccf8f457ab9
+version: 1.0.0
+release: 1

@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-guest-wifi
+hash: 6ae5ac2303b2b60c2076f77e81f8b1d8
+version: 2.0.1
+release: 1

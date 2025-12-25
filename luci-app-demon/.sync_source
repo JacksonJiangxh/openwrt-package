@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-demon
+hash: 88750d5581b759c161e482fe4b6a95b6
+version: 1.2.0-20250625
+release: 

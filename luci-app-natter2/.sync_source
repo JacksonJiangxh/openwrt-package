@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-natter2
+hash: 2bf1b7ea12d3bcc3972cfd7b61d62efa
+version: 1.0
+release: 3

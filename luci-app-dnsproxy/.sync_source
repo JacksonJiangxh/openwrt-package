@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-dnsproxy
+hash: 3498826a281267e4557d4fce14ee393a
+version: 0
+release: 0

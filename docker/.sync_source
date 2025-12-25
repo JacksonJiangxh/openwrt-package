@@ -1,0 +1,5 @@
+repo: small-package
+package: docker
+hash: 450a2b1cd9261f2e8aa4e9a7b43b72d0
+version: 29.2.0-rc.1
+release: 1

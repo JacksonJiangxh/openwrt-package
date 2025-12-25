@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-openlist2
+hash: 039db42049d14d121576ea55c1b27375
+version: 1.0.2
+release: 1

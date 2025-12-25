@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-autoipsetadder
+hash: 2a14324b0edea5083cb7eeb9e728944c
+version: 1.0
+release: 7

@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-penpot
+hash: 60a1324ceef0c3a5dfdbf85228ddac54
+version: 1.0.0-20240822
+release: 

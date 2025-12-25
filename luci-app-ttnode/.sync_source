@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-ttnode
+hash: ea83248d67f8c09e261e00502d00e958
+version: 0.3
+release: 20210904

@@ -1,0 +1,5 @@
+repo: modem_feeds
+package: luci-app-qmodem
+hash: 979b026df92207e360611236dda74fa5
+version: $(QMODEM_VERSION)
+release: $(AUTORELEASE)

@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-vsftpd
+hash: 13bec75b626adfe7c8b10e55350f4648
+version: 0
+release: 0

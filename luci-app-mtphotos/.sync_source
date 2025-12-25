@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-mtphotos
+hash: 9eddabc3e4000d44babb177a5e95b861
+version: 1.0.2-20240822
+release: 

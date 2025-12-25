@@ -1,0 +1,5 @@
+repo: small-package
+package: natter2
+hash: 539afab34fdb44f51200bc00c5451017
+version: 0
+release: $(AUTORELEASE)

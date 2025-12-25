@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-suselogin
+hash: b8758a9ede229b3cb4b6a46e5eb17716
+version: 0
+release: 5

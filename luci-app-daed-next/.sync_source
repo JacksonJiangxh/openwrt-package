@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-daed-next
+hash: 1f14bc99e1a792cfbbeb0d0173ffa73c
+version: 1.0.0
+release: 1

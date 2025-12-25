@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-aliyundrive-webdav
+hash: 7de05900760e93f45dd44efa65896649
+version: 2.3.3
+release: 1

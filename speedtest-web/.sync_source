@@ -1,0 +1,5 @@
+repo: small-package
+package: speedtest-web
+hash: 0937d8be0d539bec87a172885b623709
+version: 1.1.5
+release: $(AUTORELESE)

@@ -1,0 +1,5 @@
+repo: modem_feeds
+package: luci-app-qmodem-mwan
+hash: 64aa1d968a1877a263fc39401b3da9e4
+version: $(QMODEM_VERSION)
+release: 0

@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-openvpn-server
+hash: 103d3b4983a291ed1a1bfe0a7e183b53
+version: 1.0
+release: 3

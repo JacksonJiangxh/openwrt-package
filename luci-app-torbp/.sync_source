@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-torbp
+hash: acc99b4efbb9eb7d6ffb2b19d219a814
+version: 1.0
+release: 1

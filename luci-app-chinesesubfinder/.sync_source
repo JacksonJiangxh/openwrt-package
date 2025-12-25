@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-chinesesubfinder
+hash: ce43f81929a0c28f146019be93825ad8
+version: 1.0.3-20240822
+release: 

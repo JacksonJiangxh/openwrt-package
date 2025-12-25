@@ -1,0 +1,5 @@
+repo: small-package
+package: haproxy
+hash: 48df469dc3cc0917aede1b6d255e157a
+version: 3.2.9
+release: 1

@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-xlnetacc
+hash: 1dddc7d471a7a185add50a370b841c43
+version: 1.1
+release: 1

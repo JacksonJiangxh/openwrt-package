@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-aliyundrive-fuse
+hash: dc305f7ea8344bf446b0c85446b97448
+version: 0.1.14
+release: 1

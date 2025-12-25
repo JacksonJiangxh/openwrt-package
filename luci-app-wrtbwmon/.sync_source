@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-wrtbwmon
+hash: f8b878c929a522080ade8cc8355131eb
+version: 2.0.13
+release: 0

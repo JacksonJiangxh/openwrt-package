@@ -1,0 +1,5 @@
+repo: small-package
+package: go-aliyundrive-webdav
+hash: 529987edee1db3b3c4fc40c826f74196
+version: 1.1.1
+release: $(AUTORELEASE)

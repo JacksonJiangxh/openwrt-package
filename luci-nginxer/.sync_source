@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-nginxer
+hash: f63b95257648da1c16a594a4f23a1921
+version: 0.0.2
+release: 1

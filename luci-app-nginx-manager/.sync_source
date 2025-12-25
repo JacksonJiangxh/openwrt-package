@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-nginx-manager
+hash: 17549a1d1f6b90305f1367e74dd4399b
+version: 1.0
+release: 20211030

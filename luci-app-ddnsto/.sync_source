@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-ddnsto
+hash: 2bd185f1d2d83aa79ec73238e4439cf9
+version: 3.2.0-r2
+release: 

@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-dnsmasq-ipset
+hash: 1eb5d44eca91bfa88fd5be3fc0806fa8
+version: 0.2.1
+release: 1

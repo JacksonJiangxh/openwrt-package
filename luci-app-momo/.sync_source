@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-momo
+hash: 4d9e7419ce0748324e7d834ca4803502
+version: 1.0.5
+release: 0

@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-natmap
+hash: 7c0261a8c9bd5ee1624e59c365be4cd5
+version: 1.5.2
+release: 1

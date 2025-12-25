@@ -1,0 +1,5 @@
+repo: small-package
+package: subconverter
+hash: 0365633d81de0bf2e0f460463a9204c4
+version: 0.9.0~$(call version_abbrev,$(PKG_SOURCE_VERSION))
+release: 1

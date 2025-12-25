@@ -1,0 +1,5 @@
+repo: small-package
+package: speedtestcli
+hash: cbdadfded044881ff01f90312b19cfac
+version: 1.2.0
+release: $(PKG_ARCH_SPEEDTEST)-1

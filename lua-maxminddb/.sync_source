@@ -1,0 +1,5 @@
+repo: small-package
+package: lua-maxminddb
+hash: 4ec1a5aff8fc1564429e20dff5f32c79
+version: 0.2
+release: $(AUTORELEASE)

@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-typecho
+hash: 4421af5492075e8f97432c278e01ca2b
+version: 1.0.2-20240822
+release: 

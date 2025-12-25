@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-mentohust
+hash: 8a22c25bb213ae6f2f199115558d9417
+version: 1.0.0
+release: 1

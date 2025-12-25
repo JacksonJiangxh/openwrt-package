@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-eqosplus
+hash: f887ed9e1d6fa2a610e09f31b4262744
+version: 1.3.0
+release: 20251128

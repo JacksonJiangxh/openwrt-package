@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-3ginfo-lite
+hash: 2b124eb525da9e6b82a8287c9d1eff22
+version: 1.0.58
+release: 0

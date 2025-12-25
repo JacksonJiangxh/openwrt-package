@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-advanced
+hash: a4f4bcdb037b643bdd11fcb870eb27d9
+version: 1.20
+release: 20220218

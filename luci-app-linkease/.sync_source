@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-linkease
+hash: eb0307e713daa396ffc148a92da6966f
+version: 2.1.70-r3
+release: 

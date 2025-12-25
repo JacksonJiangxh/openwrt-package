@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-theme-ifit
+hash: 297085bcd5b581c8a5f978ef2d567889
+version: 1.5.2
+release: 1

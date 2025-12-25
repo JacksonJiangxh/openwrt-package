@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-mail
+hash: e8ab8e5ea44ccc692b3d4ceadaa19a0b
+version: 0
+release: 0

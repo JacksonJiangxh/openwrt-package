@@ -1,0 +1,5 @@
+repo: small-package
+package: luci-app-autoupdate
+hash: 11b0e3a0f41aa93e9f0f79bcbce33fa5
+version: 9
+release: 3
