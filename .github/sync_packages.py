@@ -69,7 +69,7 @@ class PackageSyncer:
                 makefile_path = item / "Makefile"
                 if makefile_path.exists():
                     pkg_info = self._parse_makefile(makefile_path)
-                    pkg_name = pkg_info.get("PKG_NAME", item.name)
+                    pkg_name = pkg_info.get("PKG_NAME") or item.name
                     self.existing_packages[pkg_name] = {
                         "version": pkg_info.get("PKG_VERSION", "0"),
                         "release": pkg_info.get("PKG_RELEASE", "0")
@@ -86,7 +86,7 @@ class PackageSyncer:
             dict: 包含PKG_NAME, PKG_VERSION, PKG_RELEASE的字典
         """
         pkg_info = {
-            "PKG_NAME": None,
+            "PKG_NAME": "",
             "PKG_VERSION": "0",
             "PKG_RELEASE": "0"
         }
@@ -266,7 +266,7 @@ class PackageSyncer:
         # 解析软件包信息
         makefile_path = package_dir / "Makefile"
         pkg_info = self._parse_makefile(makefile_path)
-        pkg_name = pkg_info.get("PKG_NAME", package_dir.name)
+        pkg_name = pkg_info.get("PKG_NAME") or package_dir.name
         pkg_version = pkg_info.get("PKG_VERSION", "0")
         pkg_release = pkg_info.get("PKG_RELEASE", "0")
         
@@ -351,7 +351,8 @@ class PackageSyncer:
             for package_dir in package_dirs:
                 makefile_path = package_dir / "Makefile"
                 pkg_info = self._parse_makefile(makefile_path)
-                pkg_name = pkg_info.get("PKG_NAME", package_dir.name)
+                # 确保pkg_name始终有值，使用目录名作为默认值
+                pkg_name = pkg_info.get("PKG_NAME") or package_dir.name
                 
                 all_packages.append({
                     "name": package_dir.name,
