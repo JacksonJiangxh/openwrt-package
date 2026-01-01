@@ -139,12 +139,17 @@ class PackageSyncer:
                     return -1
                 else:
                     return 0
-            except Exception as e:
-                print(f"语义化版本比较失败，使用自定义比较: {e}")
+            except Exception:
+                # 静默失败，直接使用自定义比较，减少日志噪音
+                pass
         
         # 自定义版本比较逻辑，处理各种非标准格式
         def normalize(v):
             """标准化版本字符串为可比较的列表"""
+            # 处理特殊情况
+            if not v or v.startswith("$"):
+                return [0]
+            
             # 替换特殊字符为点号，统一分隔符
             normalized = v.replace("_", ".").replace("-", ".").replace("+", ".")
             
@@ -164,7 +169,9 @@ class PackageSyncer:
                 except ValueError:
                     # 如果是字符串，直接使用
                     parts.append(part)
-            return parts
+            
+            # 确保至少有一个部分，避免空列表
+            return parts if parts else [0]
         
         v1_parts = normalize(ver1)
         v2_parts = normalize(ver2)
