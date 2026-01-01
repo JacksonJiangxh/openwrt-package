@@ -307,8 +307,8 @@ class PackageSyncer:
         if dest_dir.exists():
             shutil.rmtree(dest_dir)
         
-        # 复制软件包目录
-        shutil.copytree(source_dir, dest_dir)
+        # 复制软件包目录，忽略悬空符号链接
+        shutil.copytree(source_dir, dest_dir, ignore_dangling_symlinks=True)
         
         # 添加源信息文件
         with open(dest_dir / ".sync_source", "w") as f:
