@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-plex
-hash: af722c0c89ccf5f39e052f63c6c5f80b
 version: 1.0.2-20240822
-release: 
+release: 5

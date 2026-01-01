@@ -1,36 +1,25 @@
-# 
-# Copyright (C) 2018-2024 Ruilin Peng (Nick) <pymumu@gmail.com>.
 #
-# smartdns is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# smartdns is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# Copyright 2018-2025 Nick Peng <pymumu@gmail.com>
+# Licensed to the public under the GPL V3 License.
 
 include $(TOPDIR)/rules.mk
 
 PKG_LICENSE:=GPL-3.0-or-later
 PKG_MAINTAINER:=Nick Peng <pymumu@gmail.com>
-PKG_VERSION:=1.2024.45
-PKG_RELEASE:=1
+PKG_VERSION:=1.2025.47.2
+PKG_RELEASE:=19
 
 LUCI_TITLE:=LuCI for smartdns
 LUCI_DESCRIPTION:=Provides Luci for smartdns
-LUCI_DEPENDS:=+smartdns +luci-compat
-LUCI_PKGARCH:=all
+LUCI_DEPENDS:=+smartdns \
+	+PACKAGE_luci-app-smartdns_INCLUDE_WebUI:smartdns-ui
 
-define Package/$(PKG_NAME)/config
-# shown in make menuconfig <Help>
-help
-	$(LUCI_TITLE)
-	Version: $(PKG_VERSION)-$(PKG_RELEASE)
+PKG_CONFIG_DEPENDS:=CONFIG_PACKAGE_luci-app-smartdns_INCLUDE_WebUI
+
+define Package/luci-app-smartdns/config
+  config PACKAGE_luci-app-smartdns_INCLUDE_WebUI
+    bool "Include WebUI support"
+    default y
 endef
 
 include $(TOPDIR)/feeds/luci/luci.mk

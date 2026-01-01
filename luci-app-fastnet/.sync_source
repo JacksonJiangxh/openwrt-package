@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-fastnet
-hash: 1d85456d27c60ea7896e14d5ed44dd70
 version: 0.7.2-r1
-release: 
+release: 1

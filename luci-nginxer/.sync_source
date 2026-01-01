@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-nginxer
-hash: f63b95257648da1c16a594a4f23a1921
 version: 0.0.2
-release: 1
+release: 30

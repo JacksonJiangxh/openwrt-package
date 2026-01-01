@@ -1,3 +1,4 @@
-repo: helloworld
+repo: kiddin9
 package: shadow-tls
-hash: a653c47b2dd696443f99274952c547b8
+version: 0.2.25
+release: 5

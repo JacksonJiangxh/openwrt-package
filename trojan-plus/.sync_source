@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: trojan-plus
-hash: 674dd628f31818c89769e5f658935252
 version: 10.0.3
-release: 3
+release: 7

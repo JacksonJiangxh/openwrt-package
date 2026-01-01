@@ -1,15 +1,17 @@
-#
-# Copyright (C) 2008-2014 The LuCI Team <luci@lists.subsignal.org>
-#
-# This is free software, licensed under the Apache License, Version 2.0 .
-#
+
 
 include $(TOPDIR)/rules.mk
 
-LUCI_TITLE:=LuCI Support for Xware downloading app.
-LUCI_DEPENDS:=+wget
-PKG_VERSION:=1.0
-PKG_RELEASE:=2
+PKG_VERSION:=1.0.3-20240822
+PKG_RELEASE:=7
+
+LUCI_TITLE:=LuCI support for Xunlei
+LUCI_PKGARCH:=all
+LUCI_DEPENDS:=+lsblk +docker +dockerd +luci-lib-taskd
+
+define Package/luci-app-xunlei/conffiles
+/etc/config/xunlei
+endef
 
 include $(TOPDIR)/feeds/luci/luci.mk
 

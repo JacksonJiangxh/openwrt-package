@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: verysync
-hash: 9c9d03a634ab9edc6e3e9b9bfabc3062
 version: 2.21.3
-release: 1
+release: 8

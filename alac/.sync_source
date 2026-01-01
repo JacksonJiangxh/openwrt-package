@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: alac
-hash: d6f3c4fed930c61e2fb6b3bf51fd5ba3
 version: 0.0.7
-release: 2
+release: 3

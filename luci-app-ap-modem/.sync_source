@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-ap-modem
-hash: d5a893f6d78ebd06408d3ba9419a5cc3
 version: 1.0.5-20241208
-release: 
+release: 6

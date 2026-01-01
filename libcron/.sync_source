@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: libcron
-hash: 72238240ca196e24de70c050d5c63403
 version: 1.3.3
-release: 1
+release: 6

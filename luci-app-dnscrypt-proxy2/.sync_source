@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-dnscrypt-proxy2
-hash: de9fffa60966a53b60d58c8e219e68c7
 version: 2.1.3
-release: 1
+release: 7

@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-socat
-hash: 329cb1f3e1799efb705ffe3c4588d7bc
 version: 1.0
-release: 6
+release: 9

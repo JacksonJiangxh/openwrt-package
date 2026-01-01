@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-photoprism
-hash: 6b11eda80231d56a4dc10593683aab7f
 version: 1.0.3-20240822
-release: 
+release: 5

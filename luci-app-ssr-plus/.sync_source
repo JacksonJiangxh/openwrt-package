@@ -1,3 +1,4 @@
-repo: helloworld
+repo: kiddin9
 package: luci-app-ssr-plus
-hash: e3330ac2a50b04df87058d99bd184fdc
+version: 190
+release: 133

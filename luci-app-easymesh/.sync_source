@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-easymesh
-hash: c48e21108d6cb894ebd6e2b77c4418b4
 version: 2.0
-release: 0
+release: 12

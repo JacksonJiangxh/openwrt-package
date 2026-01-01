@@ -9,7 +9,7 @@ EXTRA_HELP="set ULA and DHCPv6"
 enable=$(uci get nat6-helper.@nat6-helper[0].enabled)
 interface_public=$(uci get nat6-helper.@nat6-helper[0].name)
 
-interface=$(uci get "network.$interface_public.ifname")             #获取选中的ipv6出口网口
+interface=$(uci get "network.$interface_public.device")             #获取选中的ipv6出口网口
 last_if=$(ip6tables-save -t nat | grep "v6NAT" | awk '{print $4}')  #获取之前设置的出口网口
 gateway=$(ip -6 route | grep "default from 2" | awk '{print $5}')   #获取当前网关
 last_gw=$(ip -6 route | grep "2000::/3" | awk '{print $3}')         #之前的网关地址

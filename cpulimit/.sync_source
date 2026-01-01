@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: cpulimit
-hash: c99a553a13bbf77777b35f35344077a9
 version: 0.3.2
-release: 2
+release: 3

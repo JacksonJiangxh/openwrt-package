@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: ariang
-hash: c2b44af770e7fc3cc08237eb57a8efb6
-version: 1.3.6
-release: 1
+version: 1.3.12
+release: 9

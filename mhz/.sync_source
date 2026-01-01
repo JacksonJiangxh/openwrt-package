@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: mhz
-hash: 5effe83ca3e9ff5745e5e02bb1a4ab06
 version: 0
-release: 1
+release: 5

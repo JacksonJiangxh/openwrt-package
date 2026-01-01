@@ -6,12 +6,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=headscale
-PKG_VERSION:=0.21.0
-PKG_RELEASE:=1
+PKG_VERSION:=0.27.1
+PKG_RELEASE:=7
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/juanfont/headscale/tar.gz/v$(PKG_VERSION)?
-PKG_HASH:=2afbdc038508cb694be496db9ba6b63bbc611b7038e8299e60eef0f1b227f12f
+PKG_HASH:=skip
 
 PKG_LICENSE:=BSD-3-clause
 PKG_LICENSE_FILES:=LICENSE

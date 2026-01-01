@@ -1,3 +1,4 @@
-repo: helloworld
+repo: kiddin9
 package: dnsproxy
-hash: 3a95325a7b3109a2e2966f943c668bcb
+version: 0.78.2
+release: 19

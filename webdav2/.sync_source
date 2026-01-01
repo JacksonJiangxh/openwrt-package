@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: webdav2
-hash: 66f7eb0f6f09385bf585097ea823c5d6
 version: 4.3.1
-release: 1
+release: 4

@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: taskd
-hash: e4bfbcb1cf5935129add2a3d4847b41f
 version: 1.0.3
-release: 2
+release: 3

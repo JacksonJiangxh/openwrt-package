@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-tailscale
-hash: d52e7edfc2a783656e12e32f0c45b411
 version: 1.2.6
-release: 0
+release: 19

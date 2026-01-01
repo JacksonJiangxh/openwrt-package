@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: natter2
-hash: 539afab34fdb44f51200bc00c5451017
 version: 0
-release: $(AUTORELEASE)
+release: 4

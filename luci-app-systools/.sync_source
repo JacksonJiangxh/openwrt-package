@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-systools
-hash: 8a0bb9d492dfe529c1b84ca2c2019ec0
 version: 1.0.17-r1
-release: 
+release: 16

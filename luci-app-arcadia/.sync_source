@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-arcadia
-hash: ee962b04ed28af40c1a4925653efb966
 version: 1.0.0-20250610
-release: 
+release: 7

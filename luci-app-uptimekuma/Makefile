@@ -3,7 +3,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_VERSION:=1.0.1-20251011
-PKG_RELEASE:=
+PKG_RELEASE:=4
 
 LUCI_TITLE:=LuCI support for UptimeKuma
 LUCI_PKGARCH:=all

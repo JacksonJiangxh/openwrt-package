@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-pushbot
-hash: dbe59247fe53f001424bb1c159277ccc
 version: 3.60
-release: 1
+release: 12

@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-public-ip-monitor
+version: v1.0.0
+release: 4

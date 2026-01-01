@@ -1,0 +1,4 @@
+repo: kiddin9
+package: rust-bindgen
+version: 0.72.1
+release: 1

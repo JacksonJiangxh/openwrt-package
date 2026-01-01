@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-nikki
-hash: e9136471eeb4b429b99555feda1b143d
 version: 1.25.0
-release: 0
+release: 43

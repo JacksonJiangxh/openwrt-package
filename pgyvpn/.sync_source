@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: pgyvpn
-hash: 5cdb6cecf26f55caa9befedd45bf150e
 version: 3.1.0
-release: 1
+release: 8

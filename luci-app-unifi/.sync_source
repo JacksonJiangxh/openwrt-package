@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-unifi
-hash: 659a9e2033565e7eb6a744aa19a50d29
 version: 1.0.2-20240822
-release: 
+release: 5

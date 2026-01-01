@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-chongyoung2.0
-hash: 48dc4b6778d959ad60903e06721a83a1
 version: 4.2.0
-release: 4
+release: 6

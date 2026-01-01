@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-dogcom
-hash: 351ce1e1f7e0a2b7a3b8b13da5910156
 version: 1.0.2
-release: 1
+release: 7

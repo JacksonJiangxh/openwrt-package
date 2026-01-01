@@ -1,3 +1,4 @@
-repo: helloworld
+repo: kiddin9
 package: simple-obfs
-hash: ba3360b3879cff89ad6b700976e82411
+version: 0.0.5
+release: 4

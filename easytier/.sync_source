@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: easytier
-hash: 35908726465b1b001e74130c03d4304b
 version: 2.4.5
-release: 0
+release: 13

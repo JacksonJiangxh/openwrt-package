@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-runmynas
-hash: 6032468e1a4e564a22601f755734b2db
 version: 1.1.1-20231208
-release: 
+release: 5

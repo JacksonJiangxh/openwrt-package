@@ -1,4 +1,12 @@
 #!/bin/sh
+[ ! -f "/usr/share/ucitrack/luci-app-cupsd.json" ] && {
+    cat > /usr/share/ucitrack/luci-app-cupsd.json << EEOF
+{
+    "config": "cupsd",
+    "init": "cupsd"
+}
+EEOF
+}
 
 uci -q batch <<-EOF >/dev/null
 	delete ucitrack.@cupsd[-1]
@@ -8,7 +16,5 @@ uci -q batch <<-EOF >/dev/null
 EOF
 
 
-/etc/init.d/cupsd stop
-
-rm -f /tmp/luci-indexcache
+rm -f /tmp/luci*
 exit 0

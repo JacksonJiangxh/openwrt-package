@@ -1,5 +1,4 @@
 repo: small-package
 package: luci-app-passwall
-hash: 51557b5db5fb0876983c43e2bf9be348
-version: 25.12.25
+version: 26.1.1
 release: 1

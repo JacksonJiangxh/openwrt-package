@@ -8,7 +8,7 @@
 	</div>
 	<div id="list-content"></div>
 </fieldset>
-<script type="text/javascript" src="<%=resource%>/dockerman/tar.min.js"></script>
+<script src="<%=resource%>/dockerman/tar.min.js"></script>
 <script>
 	String.prototype.replaceAll = function (search, replacement) {
 		var target = this;
@@ -275,7 +275,7 @@
 				return
 			}
 			docker_status_message('notice',
-				'<img src="<%=resource%>/icons/loading.gif" style="vertical-align:middle" /> <span style="white-space:pre-line; word-break:break-all; font-family: \'Courier New\', Courier, monospace;">' +
+				'<img src="<%=resource%>/icons/loading.svg" style="vertical-align:middle" /> <span style="white-space:pre-line; word-break:break-all; font-family: \'Courier New\', Courier, monospace;">' +
 				'Uploading...' + '</span>');
 			Globals.Instance.tarFile = TarFile.create("Archive.tar")
 			let bytesToWriteAsBlob

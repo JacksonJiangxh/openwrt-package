@@ -1,3 +1,4 @@
-repo: helloworld
+repo: kiddin9
 package: microsocks
-hash: 0e198dfb3fb8ae470b28f87ca72517a4
+version: 1.0.5
+release: 7

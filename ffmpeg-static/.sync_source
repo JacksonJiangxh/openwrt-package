@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: ffmpeg-static
-hash: bcfe21675583303bfc2c2626b1e8cf60
 version: 0.0.1
-release: 
+release: 2

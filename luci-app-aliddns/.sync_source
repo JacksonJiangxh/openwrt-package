@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-aliddns
-hash: 4929a86d7a7c182070af14371adbfd38
 version: 0.4.2
-release: 1
+release: 7

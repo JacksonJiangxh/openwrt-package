@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-poweroff
-hash: a1512a455c4a11d08df4880e380b4fee
-version: 20200726
+version: 20201112
 release: 1

@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-uptimekuma
-hash: c86de8d82305829d7e3cd8722a05ec55
 version: 1.0.1-20251011
-release: 
+release: 4

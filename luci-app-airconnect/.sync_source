@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-airconnect
-hash: cfb66d6914d2e45ee0bb8d0813e35802
 version: 1.0.2
-release: 1
+release: 7

@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-gogs
-hash: 1e5c9e6e6836f9ca3e28ac19e774e810
 version: 1.0.3-20240822
-release: 
+release: 5

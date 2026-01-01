@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: dnsforwarder
-hash: 87d84b29201ee80d5a781b6b944cb444
-version: 6.1.15
-release: 11
+version: 6.6.1
+release: 5

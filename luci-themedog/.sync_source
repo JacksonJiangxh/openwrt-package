@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-themedog
-hash: ea62aae15d357bbc8b2e94e139911cae
 version: 0.0.73
-release: 0
+release: 2

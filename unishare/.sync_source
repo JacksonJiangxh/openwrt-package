@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: unishare
-hash: 9824a66c4285d21d4cdb5b96c52a2731
 version: 1.1.2
-release: 1
+release: 8

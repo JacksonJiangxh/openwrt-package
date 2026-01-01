@@ -1,3 +1,4 @@
-repo: helloworld
+repo: kiddin9
 package: shadowsocks-rust
-hash: d817aee3998cc18c04205f3f2a7efbd1
+version: 1.24.0
+release: 14

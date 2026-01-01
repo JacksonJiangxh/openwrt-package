@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-npc
-hash: bb32525846325b8de7a8f751c9022f32
 version: 1.3
-release: 2
+release: 10

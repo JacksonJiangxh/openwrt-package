@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: sing-box
-hash: dd95ad87c4e3716f70de1a9c0d835d38
 version: 1.12.14
-release: 1
+release: 38

@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-webvirtcloud
-hash: 38a4efc791064ad146bfdc068196a730
 version: 0.8.5-20241221-1
-release: 
+release: 6

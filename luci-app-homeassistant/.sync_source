@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-homeassistant
-hash: 3fbb3f27a78812aa95b633c64372b00f
 version: 1.1.4-20250321
-release: 
+release: 7

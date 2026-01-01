@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-diskman
-hash: 8cd30c85e06cd5f18d9e370c81c61af1
 version: 0.2.13
-release: 1
+release: 5

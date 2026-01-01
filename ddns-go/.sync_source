@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: ddns-go
-hash: f83e35f7631e852ac2464493301b8158
 version: 6.14.1
-release: 1
+release: 33

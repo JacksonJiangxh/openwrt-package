@@ -1,3 +1,4 @@
-repo: helloworld
+repo: kiddin9
 package: xray-plugin
-hash: 33de319257501e113cfe580976abb061
+version: 1.8.24
+release: 3

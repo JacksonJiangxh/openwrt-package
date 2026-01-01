@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-lucky
-hash: 5ff1c172709c26f1e1e69153b06fb94e
 version: 3.0.2
-release: 14
+release: 15

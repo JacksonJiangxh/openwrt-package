@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-cloudflarespeedtest
-hash: 441c388fbb2cb27b5f6f81409f266a28
 version: 1.5.4
-release: 0
+release: 4

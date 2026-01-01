@@ -1,3 +1,4 @@
-repo: helloworld
+repo: kiddin9
 package: gn
-hash: 3b4d6637a8e7855652aac7002fbc5da9
+version: 0
+release: 13

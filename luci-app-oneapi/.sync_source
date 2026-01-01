@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-oneapi
-hash: e7a9156eed8b18f2bef2119e9bb58ab0
 version: 1.0.1-20250403
-release: 
+release: 5

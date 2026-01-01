@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-campusnet
+version: 20240319
+release: 11

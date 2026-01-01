@@ -1,3 +1,4 @@
-repo: helloworld
+repo: kiddin9
 package: redsocks2
-hash: f82fcb901e1a310eec481d680d80ff94
+version: 0.71
+release: 5

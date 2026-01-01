@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-amlogic
-hash: 41b7aa682bff02818044513c360e49eb
-version: 3.1.281
-release: 1
+version: 3.1.282
+release: 36

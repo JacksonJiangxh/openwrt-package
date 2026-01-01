@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: nps
-hash: 9a3435a1c549ba06380f5ed4c0c8ffe1
-version: 0.26.18
-release: 1
+version: 0.26.28
+release: 14

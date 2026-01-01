@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: rapidjson
-hash: fb35dbda69ac8cd7e6f9aea25e223d52
 version: 0
-release: 1
+release: 9

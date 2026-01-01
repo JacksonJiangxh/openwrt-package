@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-routerdog
-hash: 71c74b6a7def2f2a7e28c1967cb2c552
 version: 1.4.10
-release: 
+release: 5

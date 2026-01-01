@@ -6,8 +6,7 @@ load_easymesh_config() {
 	enable=$(uci -q get easymesh.config.enabled)
 	mesh_bat0=$(uci -q get network.bat0)
 	ap_mode=$(uci -q get easymesh.config.ap_mode)
-	lan=$(uci -q get network.lan.ifname)
-	ipaddr=$(uci -q get easymesh.config.ipaddr)
+	lan=$(uci -q get network.lan.device)
 	netmask=$(uci -q get easymesh.config.netmask)
 	gateway=$(uci -q get easymesh.config.gateway)
 	dns=$(uci -q get easymesh.config.dns)
@@ -91,7 +90,6 @@ add_wifi_mesh() {
 add_kvr() {
 	kvr=$(uci -q get easymesh.config.kvr)
 	mobility_domain=$(uci -q get easymesh.config.mobility_domain)
-	iapp=$(uci -q get easymesh.config.iapp)
 	for apall in $(uci -X show wireless | grep wifi-device | awk -F'[.=]' '{print $2}'); do
 		if [ "$kvr" = 1 ]; then
 			uci set wireless.default_$apall.ieee80211k='1'
@@ -109,13 +107,6 @@ add_kvr() {
 			uci -q delete wireless.default_$apall.ieee80211k
 			uci -q delete wireless.default_$apall.ieee80211v
 			uci -q delete wireless.default_$apall.ieee80211r
-			uci commit wireless
-		fi
-		if [ "$iapp" = 1 ]; then
-			uci set wireless.default_$apall.iapp_interface='br-lan'
-			uci commit wireless
-		else
-			uci -q delete wireless.default_$apall.iapp_interface
 			uci commit wireless
 		fi
 	done
@@ -170,7 +161,7 @@ set_easymesh() {
 			if [ "$brlan" = "br-lan" ]; then
 				uci add_list network.@device[0].ports='bat0'
 			else
-				uci set network.lan.ifname="${lan} bat0"
+				uci set network.lan.device="${lan} bat0"
 			fi
 			uci commit network
 		fi

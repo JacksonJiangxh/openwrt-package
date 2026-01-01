@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: internet-detector-mod-modem-restart
-hash: c21e045a123c562e7a44b8ac6742816d
 version: 1.7.1
-release: 1
+release: 25

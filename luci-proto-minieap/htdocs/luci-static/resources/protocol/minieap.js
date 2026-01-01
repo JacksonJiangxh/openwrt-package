@@ -10,12 +10,12 @@ return network.registerProtocol('minieap', {
 		return _('MiniEAP client');
 	},
 
-	getOpkgPackage: function() {
+	getPackageName: function() {
 		return 'minieap';
 	},
 
 	renderFormOptions: function(s) {
-		var dev = this.getL2Device() || this.getDevice(), o;
+		let dev = this.getL2Device() || this.getDevice(), o;
 
 		// remove firewall tab, add rjv3 tab
 		try {

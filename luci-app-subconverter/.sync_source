@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-subconverter
-hash: 0b973c3da352dc11a088fccf8f457ab9
 version: 1.0.0
-release: 1
+release: 24

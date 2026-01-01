@@ -3,7 +3,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_VERSION:=1.0.0-20250610
-PKG_RELEASE:=
+PKG_RELEASE:=7
 
 LUCI_TITLE:=LuCI support for arcadia
 LUCI_PKGARCH:=all

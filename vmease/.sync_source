@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: vmease
-hash: 530b366b0fb95a377f029d03b58c871d
 version: 0.8.7
-release: $(PKG_ARCH_VMEASE)-1
+release: 5

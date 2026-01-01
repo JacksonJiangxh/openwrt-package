@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: openlist2
-hash: 6d60863d3608cf475880a436ac8d8de5
 version: 4.1.8
-release: 1
+release: 15

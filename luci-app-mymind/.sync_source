@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-mymind
-hash: ec74ba73b91a5957f4ebd67208eb3b88
 version: 1.0.1-20221119
-release: 
+release: 2

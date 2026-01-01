@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-oaf
-hash: 546c4fa1525f4a91de01f18d282676a5
 version: 6.1.2
-release: 1
+release: 18

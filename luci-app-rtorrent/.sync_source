@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-rtorrent
-hash: 58d1afd887b1ca0fd691eaee0152c9fa
-version: 0
-release: 0
+version: 0.1.7
+release: 11

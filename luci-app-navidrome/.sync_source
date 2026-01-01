@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-navidrome
-hash: 090c504872a210778ae88d9cc508d5bc
 version: 1.0.1-20240822
-release: 
+release: 5

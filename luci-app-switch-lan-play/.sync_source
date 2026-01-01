@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-switch-lan-play
+version: 0.0.3
+release: 2

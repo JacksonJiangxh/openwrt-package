@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-onliner
-hash: ffda712484eed075413023412d0910e2
-version: 1.1
-release: 5
+version: 1.2
+release: 2

@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-droidmodem
-hash: f13ff7795c08cd165e12415b27bfa9b6
 version: 1.1
-release: 0
+release: 10

@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-lib-taskd
-hash: 56c0f2b65d367571cc2579fec94adf3a
 version: 1.0.25
-release: 
+release: 7

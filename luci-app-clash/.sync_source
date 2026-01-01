@@ -1,4 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-clash
 version: v1.8.0
-release: 0
+release: 17

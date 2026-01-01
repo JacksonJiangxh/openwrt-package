@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-proto-minieap
-hash: c1fe5da3fc60538d789982f0a5f91c2f
 version: 2.1
-release: 1
+release: 5

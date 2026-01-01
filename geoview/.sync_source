@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: geoview
-hash: bdce55c19263946d4eb6cf0e0b6e58e4
-version: 0.1.11
-release: 1
+version: 0.2.2
+release: 12

@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: routergo
-hash: a33d80ccfdd7e090ce61b6978e1b0e6e
 version: 0.14.10
-release: 
+release: 3

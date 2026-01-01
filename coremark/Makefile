@@ -8,17 +8,16 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=coremark
-PKG_SOURCE_DATE:=2023-01-25
-PKG_SOURCE_VERSION:=d5fad6bd094899101a4e5fd53af7298160ced6ab
-PKG_RELEASE:=1
+PKG_SOURCE_DATE:=2025-05-01
+PKG_SOURCE_VERSION:=1f483d5b8316753a742cbf5590caf5bd0a4e4777
+PKG_RELEASE:=6
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_SOURCE_DATE).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/eembc/coremark/tar.gz/$(PKG_SOURCE_VERSION)?
-PKG_HASH:=76f3b98fc940d277521023dc6e106551ef4a2180fa4c3da8cd5bf933aa494ef2
+PKG_HASH:=skip
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_SOURCE_VERSION)
 
-PKG_MAINTAINER:=Lim Guo Wei <limguowei@gmail.com> \
-		Aleksander Jan Bajkowski <olek2@wp.pl>
+PKG_MAINTAINER:=Lim Guo Wei <limguowei@gmail.com>
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE.md
 
@@ -48,14 +47,14 @@ define Package/coremark/config
 	config COREMARK_ENABLE_MULTITHREADING
 		bool "Enable multithreading support"
 		depends on PACKAGE_coremark
-		default n
+		default y
 		help
 			This enables multithreading support
 
 	config COREMARK_NUMBER_OF_THREADS
 		int "Number of threads"
 		depends on COREMARK_ENABLE_MULTITHREADING
-		default 2
+		default 16
 		help
 			Number of threads to run in parallel
 endef
@@ -70,8 +69,8 @@ endif
 
 define Build/Compile
 	$(SED) 's|EXE = .exe|EXE =|' $(PKG_BUILD_DIR)/posix/core_portme.mak
-	mkdir $(PKG_BUILD_DIR)/$(ARCH)
-	$(CP) -r $(PKG_BUILD_DIR)/linux/* $(PKG_BUILD_DIR)/$(ARCH)
+	mkdir -p $(PKG_BUILD_DIR)/$(ARCH)
+	$(CP) $(PKG_BUILD_DIR)/linux/* $(PKG_BUILD_DIR)/$(ARCH)/
 	$(MAKE) -C $(PKG_BUILD_DIR) PORT_DIR=$(ARCH) $(MAKE_FLAGS) \
 		PORT_CFLAGS="$(TARGET_CFLAGS)" XCFLAGS="$(EXTRA_CFLAGS)" compile
 endef

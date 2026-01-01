@@ -737,7 +737,7 @@ ac_rule_nft() {
 	else
 		# For each Interface, find its actual ifname and add an iifname-limited prerouting rule
 		for name in $Interface; do
-			local IFNAME=$(uci -P /var/state get network."$name".ifname 2>/dev/null)
+			local IFNAME=$(uci -P /var/state get network."$name".device 2>/dev/null)
 			[ -z "$IFNAME" ] && IFNAME=$(uci -P /var/state get network."$name".device 2>/dev/null)
 			if [ -n "$IFNAME" ]; then
 				if [ -n "$MATCH_SET" ]; then
@@ -839,7 +839,7 @@ ac_rule_iptables() {
 		$IPT -I PREROUTING 1 -p tcp $EXT_ARGS $MATCH_SET -m comment --comment "$TAG" -j SS_SPEC_WAN_AC
 	else
 		for name in $Interface; do
-			local IFNAME=$(uci -P /var/state get network."$name".ifname 2>/dev/null)
+			local IFNAME=$(uci -P /var/state get network."$name".device 2>/dev/null)
 			[ -z "$IFNAME" ] && IFNAME=$(uci -P /var/state get network."$name".device 2>/dev/null)
 			[ -n "$IFNAME" ] && $IPT -I PREROUTING 1 ${IFNAME:+-i $IFNAME} -p tcp $EXT_ARGS $MATCH_SET -m comment --comment "$TAG" -j SS_SPEC_WAN_AC
 		done
@@ -1041,7 +1041,7 @@ tp_rule_nft() {
 	else
 		# Specific interface
 		for name in $Interface; do
-			IFNAME=$(uci -P /var/state get network."$name".ifname 2>/dev/null)
+			IFNAME=$(uci -P /var/state get network."$name".device 2>/dev/null)
 			[ -z "$IFNAME" ] && IFNAME=$(uci -P /var/state get network."$name".device 2>/dev/null)
 			if [ -n "$IFNAME" ]; then
 				if [ -n "$MATCH_SET" ]; then
@@ -1106,7 +1106,7 @@ tp_rule_iptables() {
 		$ipt -I PREROUTING 1 -p udp $EXT_ARGS $MATCH_SET -m comment --comment "$TAG" -j SS_SPEC_TPROXY
 	else
 		for name in $Interface; do
-			local IFNAME=$(uci -P /var/state get network."$name".ifname 2>/dev/null)
+			local IFNAME=$(uci -P /var/state get network."$name".device 2>/dev/null)
 			[ -z "$IFNAME" ] && IFNAME=$(uci -P /var/state get network."$name".device 2>/dev/null)
 			[ -n "$IFNAME" ] && $ipt -I PREROUTING 1 ${IFNAME:+-i $IFNAME} -p udp $EXT_ARGS $MATCH_SET -m comment --comment "$TAG" -j SS_SPEC_TPROXY
 		done

@@ -1,3 +1,4 @@
-repo: helloworld
+repo: kiddin9
 package: hysteria
-hash: 4cd8ca2cb2eadc394c06e3e35deb2a0a
+version: 2.6.5
+release: 9

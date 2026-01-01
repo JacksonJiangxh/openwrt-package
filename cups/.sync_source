@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: cups
-hash: c5cf062d7d38b3e85da3bf2d095fcb9e
-version: 2.3.3
-release: 1
+version: 2.4.16
+release: 11

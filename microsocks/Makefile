@@ -6,11 +6,11 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=microsocks
 PKG_VERSION:=1.0.5
-PKG_RELEASE:=1
+PKG_RELEASE:=7
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/rofl0r/microsocks/tar.gz/v$(PKG_VERSION)?
-PKG_HASH:=939d1851a18a4c03f3cc5c92ff7a50eaf045da7814764b4cb9e26921db15abc8
+PKG_HASH:=skip
 
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=COPYING
@@ -25,7 +25,7 @@ define Package/microsocks
   SECTION:=net
   CATEGORY:=Network
   SUBMENU:=Web Servers/Proxies
-  TITLE:=Tiny, portable SOCKS5 server
+  TITLE:=Tiny, portable SOCKS5 server. Support forwarding rules
   URL:=https://github.com/rofl0r/microsocks
   DEPENDS:=+libpthread
 endef
@@ -33,6 +33,7 @@ endef
 define Package/microsocks/description
   A SOCKS5 service that you can run on your remote boxes to tunnel connections
   through them, if for some reason SSH doesn't cut it for you.
+  This version supports forwarding rules.
 endef
 
 define Package/microsocks/install

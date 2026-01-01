@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: linkmount
-hash: 139756a02d971067373e0095d4477af6
 version: 0
-release: 3
+release: 7

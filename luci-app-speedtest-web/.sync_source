@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-speedtest-web
-hash: d1484320c5af38ae57885f25dfbc3fe4
 version: 1.0
-release: 1
+release: 11

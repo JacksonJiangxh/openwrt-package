@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-webd
-hash: 62ef90671c1790b979d99e653454c746
 version: 1.4
-release: 1
+release: 12

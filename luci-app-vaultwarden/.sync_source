@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-vaultwarden
-hash: 0f6fa86ee307a3dad466dd621e14e21d
 version: 1.0.1-20240822
-release: 
+release: 5

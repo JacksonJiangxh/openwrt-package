@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-htreader
-hash: a1faed6615e2f85d31c4600e63923457
 version: 1.0.2-20240822
-release: 
+release: 5

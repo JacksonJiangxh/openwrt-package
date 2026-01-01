@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-openwebui
-hash: 9e2f44e70219a526f9d53ecb9319669c
 version: 1.0.8-20250207
-release: 
+release: 4

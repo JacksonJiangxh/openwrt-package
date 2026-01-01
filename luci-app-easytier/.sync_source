@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-easytier
-hash: 8c10abef89c7626abb513e8b9e0561af
 version: 2.4.5
-release: 1
+release: 51

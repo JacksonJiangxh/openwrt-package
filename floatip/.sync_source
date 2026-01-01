@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: floatip
-hash: 9d34446d2cf5fd9654438600da5fa947
 version: 1.0.10
-release: 1
+release: 18

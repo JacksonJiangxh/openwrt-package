@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-webdav
-hash: d7134a847b5c0403ea8f3108c3dd650b
 version: 1.0.0
-release: 1
+release: 6

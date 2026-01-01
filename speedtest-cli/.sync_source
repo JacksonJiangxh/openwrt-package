@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: speedtest-cli
-hash: 37f7cdb7138d95a0331c14edb09e3ca2
 version: 1.2.0
-release: 1
+release: 6

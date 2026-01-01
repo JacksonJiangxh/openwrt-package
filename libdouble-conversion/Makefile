@@ -9,11 +9,11 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=libdouble-conversion
 PKG_VERSION:=3.3.1
-PKG_RELEASE:=1
+PKG_RELEASE:=6
 
 PKG_SOURCE:=double-conversion-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/google/double-conversion/tar.gz/v$(PKG_VERSION)?
-PKG_HASH:=fe54901055c71302dcdc5c3ccbe265a6c191978f3761ce1414d0895d6b0ea90e
+PKG_HASH:=skip
 
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/double-conversion-$(PKG_VERSION)
 PKG_BUILD_DIR:=$(BUILD_DIR)/double-conversion-$(PKG_VERSION)

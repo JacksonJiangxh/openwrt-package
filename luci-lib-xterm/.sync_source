@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-lib-xterm
-hash: 7817022e1c6804cb89a259eeca034868
 version: 4.18.0
-release: 
+release: 2

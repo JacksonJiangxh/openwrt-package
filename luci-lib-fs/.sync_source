@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-lib-fs
-hash: 6e9b444df0a52b30b44d2b87ab23ebe4
 version: 1.0
-release: 1
+release: 5

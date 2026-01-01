@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: smartdns
-hash: 1e7ca719944b023290f11f0f2b04bd3f
 version: 47.1
-release: 1
+release: 16

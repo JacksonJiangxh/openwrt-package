@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: udp2raw
-hash: 65d6bc4c9903a214954fc45f13422a60
 version: 20230206.0
-release: 1
+release: 2

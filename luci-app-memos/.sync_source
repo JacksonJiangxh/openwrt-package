@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-memos
-hash: 2eed6843064a49f1e2f1f08d8dd7acd0
 version: 1.0.2-20240822
-release: 
+release: 5

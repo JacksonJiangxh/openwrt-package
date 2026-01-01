@@ -1,3 +1,4 @@
-repo: helloworld
+repo: kiddin9
 package: chinadns-ng
-hash: a93b620351459b62ebdc89d3890d1206
+version: 2025.08.09
+release: 13

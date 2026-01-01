@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: quickstart
-hash: 8a4029242788818c977d8dd186af834c
 version: 0.11.13
-release: 2
+release: 34

@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-verysync
-hash: 621a4ee91bf38930bd9872dc35acb938
 version: 1.0
-release: 5
+release: 10

@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-alpha-config
-hash: 42ac1938c2c7cbbda425d6bdb528e466
 version: 2.1
-release: 0
+release: 3

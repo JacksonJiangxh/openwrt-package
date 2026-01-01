@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-minieap
-hash: 21d6b19bf5870411361db13cc30cddba
 version: 0
-release: 0
+release: 10

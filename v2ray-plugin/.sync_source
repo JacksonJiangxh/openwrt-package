@@ -1,3 +1,4 @@
-repo: helloworld
+repo: kiddin9
 package: v2ray-plugin
-hash: 8aa2e7424d541cbfaf3d56d9c8d430f9
+version: 5.41.0
+release: 10

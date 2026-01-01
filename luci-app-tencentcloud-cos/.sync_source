@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-tencentcloud-cos
-hash: 8d767bc9ac088b8ef291c9f7eefa2ec5
 version: 0
-release: 1
+release: 7

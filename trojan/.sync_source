@@ -1,3 +1,4 @@
-repo: helloworld
+repo: kiddin9
 package: trojan
-hash: 6a4b0b4d6d7a169f71ebf0157f1178e9
+version: 1.16.0
+release: 6

@@ -15,7 +15,7 @@ function lanip()
 	-- 尝试从 LAN 接口信息中读取（优先 ifname，再 fallback 到 device）
 	if not lan_ip or lan_ip == "" then
 		lan_ip = luci.sys.exec([[
-ip -4 addr show $(uci -q -p /tmp/state get network.lan.ifname || uci -q -p /tmp/state get network.lan.device) 2>/dev/null \
+ip -4 addr show $(uci -q -p /tmp/state get network.lan.device || uci -q -p /tmp/state get network.lan.device) 2>/dev/null \
   | grep -w 'inet' | awk '{print $2}' | cut -d'/' -f1 | grep -v '^127\.' | head -n1 | tr -d '\n']])
 	end
 
@@ -287,5 +287,6 @@ if is_finded("chinadns-ng") then
 	end
 end
 
+m:section(SimpleSection).template = "shadowsocksr/status_bottom"
 return m
 

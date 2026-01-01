@@ -1,3 +1,4 @@
-repo: helloworld
+repo: kiddin9
 package: dns2socks-rust
-hash: a446af6c36d19e07214e4fcb5db1b5b3
+version: 0.2.3
+release: 9

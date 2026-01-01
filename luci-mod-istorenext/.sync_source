@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-mod-istorenext
-hash: 236bd9acb60530e513e5436b183f8860
 version: 0.0.4
-release: 1
+release: 2

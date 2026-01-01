@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: webd
-hash: 7d07c76e484c3a1adc62a3c16c2fe06a
 version: 20240223
-release: 1
+release: 4

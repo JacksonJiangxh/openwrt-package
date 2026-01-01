@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: toml11
-hash: 1ae1ed7fd14e5f8cfaa5760650d2e774
 version: 4.4.0
-release: 1
+release: 3

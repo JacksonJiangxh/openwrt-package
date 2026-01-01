@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-xteve
-hash: 77822bd6a9c2ac96ddd3cc6398594335
 version: 1.0.2-20240822
-release: 
+release: 5

@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-homebridge
-hash: f9eaad5c8991f5cadab251398ad19dbc
 version: 0.1.0
-release: 1
+release: 19

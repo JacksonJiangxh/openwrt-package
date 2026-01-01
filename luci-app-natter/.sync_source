@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-natter
-hash: c7a29b0c46d3676d5416221d6ebdde7d
 version: 1.1
-release: 5
+release: 12

@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: internet-detector-mod-telegram
-hash: 44b8598f434c7af8fb76fdaba61da9a8
 version: 1.7.1
-release: 1
+release: 10

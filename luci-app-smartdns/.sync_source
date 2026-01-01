@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: luci-app-smartdns
-hash: 5e43f6e7df4862ce7cf6c825f1a8d72f
-version: 1.2024.45
-release: 1
+version: 1.2025.47.2
+release: 19
