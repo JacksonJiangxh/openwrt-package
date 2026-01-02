@@ -1,5 +1,4 @@
-repo: small-package
+repo: kiddin9
 package: lucky
-hash: 5a108289c28a1a969d699bbf9bebb50b
 version: 2.24.0
-release: 1
+release: 14
