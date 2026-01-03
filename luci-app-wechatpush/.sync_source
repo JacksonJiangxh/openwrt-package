@@ -1,4 +1,4 @@
 repo: kiddin9
 package: luci-app-wechatpush
-version: 3.6.10
-release: 41
+version: 3.6.11
+release: 42
