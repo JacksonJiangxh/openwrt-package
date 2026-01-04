@@ -1,4 +1,4 @@
 repo: kiddin9
 package: luci-app-iperf3-server
-version: 2.0
-release: 12
+version: 3.0
+release: 13
