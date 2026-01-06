@@ -1,4 +1,4 @@
 repo: kiddin9
 package: einat-ebpf
 version: $(PKG_UPSTREAM_VERSION)$(if $(PKG_UPSTREAM_GITHASH),~$(call version_abbrev,$(PKG_UPSTREAM_GITHASH)))
-release: 55
+release: 56
