@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-wan-mac
+version: 1.0.1-20230405
+release: 5

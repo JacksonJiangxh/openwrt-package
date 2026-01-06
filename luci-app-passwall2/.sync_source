@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-passwall2
+version: 26.1.1
+release: 1

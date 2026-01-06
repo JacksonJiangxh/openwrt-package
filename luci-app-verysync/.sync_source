@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-verysync
+version: 1.0
+release: 10

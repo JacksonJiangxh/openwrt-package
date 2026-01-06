@@ -1,0 +1,4 @@
+repo: small-package
+package: watchdog
+version: 1
+release: 5

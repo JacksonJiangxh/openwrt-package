@@ -1,0 +1,4 @@
+repo: kiddin9
+package: dns2socks-rust
+version: 0.2.3
+release: 9

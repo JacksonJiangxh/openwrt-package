@@ -1,0 +1,4 @@
+repo: kiddin9
+package: openvpn-dns-hotplug
+version: 0.0.1
+release: 3

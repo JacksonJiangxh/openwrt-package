@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-dpanel
+version: 1.0.0-20251009
+release: 1

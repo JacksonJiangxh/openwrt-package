@@ -1,0 +1,4 @@
+repo: qmodem
+package: luci-app-qmodem-mwan
+version: $(QMODEM_VERSION)
+release: 0

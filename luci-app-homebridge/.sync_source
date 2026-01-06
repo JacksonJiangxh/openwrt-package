@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-homebridge
+version: 0.1.0
+release: 19

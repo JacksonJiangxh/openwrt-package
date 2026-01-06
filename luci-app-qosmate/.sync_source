@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-qosmate
+version: 1.0.14
+release: 38

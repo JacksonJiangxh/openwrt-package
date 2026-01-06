@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-alpha-config
+version: 2.1
+release: 3

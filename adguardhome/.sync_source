@@ -1,0 +1,4 @@
+repo: small-package
+package: adguardhome
+version: 0.107.71
+release: 1

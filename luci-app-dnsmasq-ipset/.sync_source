@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-dnsmasq-ipset
+version: 0.2.1
+release: 9

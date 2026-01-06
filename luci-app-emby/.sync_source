@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-emby
+version: 1.0.3-20240822
+release: 5

@@ -1,0 +1,4 @@
+repo: qmodem
+package: sms-tool_q
+version: $(QMODEM_VERSION)
+release: $(QMODEM_RELEASE)

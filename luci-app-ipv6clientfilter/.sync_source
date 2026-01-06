@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-ipv6clientfilter
+version: 1.2.1
+release: 5

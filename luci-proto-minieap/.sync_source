@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-proto-minieap
+version: 2.1
+release: 5

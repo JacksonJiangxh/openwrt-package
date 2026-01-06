@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-webadmin
+version: 1.0
+release: 5

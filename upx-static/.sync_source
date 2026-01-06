@@ -1,0 +1,4 @@
+repo: small-package
+package: upx-static
+version: 3.96
+release: 20220422

@@ -1,0 +1,4 @@
+repo: qmodem
+package: luci-app-qmodem-sms
+version: $(QMODEM_VERSION)
+release: 0

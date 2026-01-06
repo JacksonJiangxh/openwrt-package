@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-pushbot
+version: 3.60
+release: 12

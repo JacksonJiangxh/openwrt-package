@@ -1,0 +1,4 @@
+repo: kiddin9
+package: stuntman
+version: $(PKG_UPSTREAM_VERSION)~$(call version_abbrev,$(PKG_UPSTREAM_GITHASH))
+release: 10

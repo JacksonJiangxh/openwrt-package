@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-dogcom
+version: 1.0.2
+release: 7

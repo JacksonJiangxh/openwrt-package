@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-rtorrent
+version: 0.1.7
+release: 11

@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-openwebui
+version: 1.0.8-20250207
+release: 4

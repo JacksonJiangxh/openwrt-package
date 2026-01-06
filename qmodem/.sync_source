@@ -1,0 +1,4 @@
+repo: qmodem
+package: qmodem
+version: $(QMODEM_VERSION)
+release: $(AUTORELEASE)

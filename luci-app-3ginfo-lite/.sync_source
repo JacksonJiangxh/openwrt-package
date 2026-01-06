@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-3ginfo-lite
+version: 1.0.76
+release: 11

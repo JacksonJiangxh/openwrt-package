@@ -1,0 +1,4 @@
+repo: small-package
+package: transmission-web-control
+version: 0
+release: 3

@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-broadbandacc
+version: 3.9
+release: 8

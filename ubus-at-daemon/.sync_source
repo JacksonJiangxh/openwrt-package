@@ -1,0 +1,4 @@
+repo: qmodem
+package: ubus-at-daemon
+version: $(QMODEM_VERSION)
+release: $(QMODEM_RELEASE)

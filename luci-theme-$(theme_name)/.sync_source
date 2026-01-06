@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-theme-$(theme_name)
+version: 3.9.5-beta
+release: 10

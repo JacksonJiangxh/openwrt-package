@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-tencentddns
+version: 0.2.0
+release: 7

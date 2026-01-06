@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-nekobox
+version: 2.0.9
+release: rc11
