@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-$(theme_name)
+version: 3.2.1
+release: 20251227
