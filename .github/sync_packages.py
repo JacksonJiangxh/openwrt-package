@@ -98,16 +98,42 @@ class PackageSyncer:
             "PKG_RELEASE": "0"
         }
         
+        # 存储Makefile中的变量定义
+        variables = {}
+        
         try:
             with open(makefile_path, "r", encoding="utf-8") as f:
                 for line in f:
                     line = line.strip()
+                    # 解析变量定义（格式：VARIABLE_NAME:=value）
+                    if ":=" in line and not line.startswith("#"):
+                        var_name, var_value = line.split(":=", 1)
+                        var_name = var_name.strip()
+                        var_value = var_value.strip()
+                        # 替换变量值中的变量引用
+                        for v in variables:
+                            var_value = var_value.replace(f"$({{{v}}}", variables[v]).replace(f"$({v})", variables[v])
+                        variables[var_name] = var_value
+                    
+                    # 解析PKG_NAME，替换其中的变量
                     if line.startswith("PKG_NAME:="):
-                        pkg_info["PKG_NAME"] = line.split(":=")[1].strip()
+                        pkg_name = line.split(":=")[1].strip()
+                        # 替换变量引用
+                        for v in variables:
+                            pkg_name = pkg_name.replace(f"$({{{v}}}", variables[v]).replace(f"$({v})", variables[v])
+                        pkg_info["PKG_NAME"] = pkg_name
                     elif line.startswith("PKG_VERSION:="):
-                        pkg_info["PKG_VERSION"] = line.split(":=")[1].strip()
+                        pkg_version = line.split(":=")[1].strip()
+                        # 替换变量引用
+                        for v in variables:
+                            pkg_version = pkg_version.replace(f"$({{{v}}}", variables[v]).replace(f"$({v})", variables[v])
+                        pkg_info["PKG_VERSION"] = pkg_version
                     elif line.startswith("PKG_RELEASE:="):
-                        pkg_info["PKG_RELEASE"] = line.split(":=")[1].strip()
+                        pkg_release = line.split(":=")[1].strip()
+                        # 替换变量引用
+                        for v in variables:
+                            pkg_release = pkg_release.replace(f"$({{{v}}}", variables[v]).replace(f"$({v})", variables[v])
+                        pkg_info["PKG_RELEASE"] = pkg_release
         except Exception as e:
             print(f"解析Makefile失败 {makefile_path}: {e}")
         
@@ -279,6 +305,24 @@ class PackageSyncer:
         pkg_version = pkg_info.get("PKG_VERSION", "0")
         pkg_release = pkg_info.get("PKG_RELEASE", "0")
         
+        # 检测是否为特殊情况（文件夹名包含变量或 PKG_NAME 包含变量）
+        is_special_case = False
+        # 检查文件夹名是否包含变量
+        if "$" in package_dir.name:
+            is_special_case = True
+        # 检查原始 PKG_NAME 是否包含变量（通过重新读取 Makefile 文件，提取原始 PKG_NAME）
+        try:
+            with open(makefile_path, "r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if line.startswith("PKG_NAME:="):
+                        original_pkg_name = line.split(":=")[1].strip()
+                        if "$" in original_pkg_name:
+                            is_special_case = True
+                        break
+        except Exception:
+            pass
+        
         # 统一转换为小写，避免大小写冲突
         normalized_pkg_name = pkg_name.lower()
         
@@ -289,20 +333,20 @@ class PackageSyncer:
                (self._compare_versions(pkg_version, existing["version"]) == 0 and \
                 self._compare_versions(pkg_release, existing["release"]) > 0):
                 # 需要更新
-                self._update_package(repo_name, package_dir, normalized_pkg_name, pkg_version, pkg_release)
+                self._update_package(repo_name, package_dir, pkg_name, pkg_version, pkg_release, is_special_case)
                 self.stats["updated_packages"] += 1
-                print(f"更新软件包: {pkg_name} -> {normalized_pkg_name} (来自 {repo_name})，版本 {existing['version']}-{existing['release']} -> {pkg_version}-{pkg_release}")
+                print(f"更新软件包: {pkg_name} -> {pkg_name} (来自 {repo_name})，版本 {existing['version']}-{existing['release']} -> {pkg_version}-{pkg_release}")
             else:
                 # 跳过，版本相同或更低
                 self.stats["skipped_packages"] += 1
-                print(f"跳过软件包: {pkg_name} -> {normalized_pkg_name} (来自 {repo_name})，版本相同或更低")
+                print(f"跳过软件包: {pkg_name} -> {pkg_name} (来自 {repo_name})，版本相同或更低")
         else:
             # 新软件包
-            self._update_package(repo_name, package_dir, normalized_pkg_name, pkg_version, pkg_release)
+            self._update_package(repo_name, package_dir, pkg_name, pkg_version, pkg_release, is_special_case)
             self.stats["new_packages"] += 1
-            print(f"同步新软件包: {pkg_name} -> {normalized_pkg_name} (来自 {repo_name})，版本 {pkg_version}-{pkg_release}")
+            print(f"同步新软件包: {pkg_name} -> {pkg_name} (来自 {repo_name})，版本 {pkg_version}-{pkg_release}")
     
-    def _update_package(self, repo_name, source_dir, pkg_name, pkg_version, pkg_release):
+    def _update_package(self, repo_name, source_dir, pkg_name, pkg_version, pkg_release, is_special_case=False):
         """
         更新或添加软件包
         
@@ -312,7 +356,10 @@ class PackageSyncer:
             pkg_name: 软件包名称
             pkg_version: 软件包版本
             pkg_release: 软件包发布版本
+            is_special_case: 是否为特殊情况（文件夹名包含变量或 PKG_NAME 包含变量）
         """
+        # 对于特殊情况，使用解析后的 PKG_NAME 作为文件夹名
+        # 对于普通情况，保持原有的行为，使用小写 PKG_NAME 作为文件夹名
         dest_dir = self.output_dir / pkg_name
         
         # 删除所有具有相同小写 PKG_NAME 的目录
