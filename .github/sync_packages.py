@@ -70,7 +70,9 @@ class PackageSyncer:
                 if makefile_path.exists():
                     pkg_info = self._parse_makefile(makefile_path)
                     pkg_name = pkg_info.get("PKG_NAME") or item.name
-                    self.existing_packages[pkg_name] = {
+                    # 统一转换为小写，避免大小写冲突
+                    normalized_pkg_name = pkg_name.lower()
+                    self.existing_packages[normalized_pkg_name] = {
                         "version": pkg_info.get("PKG_VERSION", "0"),
                         "release": pkg_info.get("PKG_RELEASE", "0")
                     }
@@ -272,25 +274,28 @@ class PackageSyncer:
         pkg_version = pkg_info.get("PKG_VERSION", "0")
         pkg_release = pkg_info.get("PKG_RELEASE", "0")
         
+        # 统一转换为小写，避免大小写冲突
+        normalized_pkg_name = pkg_name.lower()
+        
         # 检查是否需要更新
-        if pkg_name in self.existing_packages:
-            existing = self.existing_packages[pkg_name]
+        if normalized_pkg_name in self.existing_packages:
+            existing = self.existing_packages[normalized_pkg_name]
             if self._compare_versions(pkg_version, existing["version"]) > 0 or \
                (self._compare_versions(pkg_version, existing["version"]) == 0 and \
                 self._compare_versions(pkg_release, existing["release"]) > 0):
                 # 需要更新
-                self._update_package(repo_name, package_dir, pkg_name, pkg_version, pkg_release)
+                self._update_package(repo_name, package_dir, normalized_pkg_name, pkg_version, pkg_release)
                 self.stats["updated_packages"] += 1
-                print(f"更新软件包: {pkg_name} (来自 {repo_name})，版本 {existing['version']}-{existing['release']} -> {pkg_version}-{pkg_release}")
+                print(f"更新软件包: {pkg_name} -> {normalized_pkg_name} (来自 {repo_name})，版本 {existing['version']}-{existing['release']} -> {pkg_version}-{pkg_release}")
             else:
                 # 跳过，版本相同或更低
                 self.stats["skipped_packages"] += 1
-                print(f"跳过软件包: {pkg_name} (来自 {repo_name})，版本相同或更低")
+                print(f"跳过软件包: {pkg_name} -> {normalized_pkg_name} (来自 {repo_name})，版本相同或更低")
         else:
             # 新软件包
-            self._update_package(repo_name, package_dir, pkg_name, pkg_version, pkg_release)
+            self._update_package(repo_name, package_dir, normalized_pkg_name, pkg_version, pkg_release)
             self.stats["new_packages"] += 1
-            print(f"同步新软件包: {pkg_name} (来自 {repo_name})，版本 {pkg_version}-{pkg_release}")
+            print(f"同步新软件包: {pkg_name} -> {normalized_pkg_name} (来自 {repo_name})，版本 {pkg_version}-{pkg_release}")
     
     def _update_package(self, repo_name, source_dir, pkg_name, pkg_version, pkg_release):
         """
@@ -355,10 +360,13 @@ class PackageSyncer:
                 pkg_info = self._parse_makefile(makefile_path)
                 # 确保pkg_name始终有值，使用目录名作为默认值
                 pkg_name = pkg_info.get("PKG_NAME") or package_dir.name
+                # 统一转换为小写，避免大小写冲突
+                normalized_pkg_name = pkg_name.lower()
                 
                 all_packages.append({
                     "name": package_dir.name,
                     "pkg_name": pkg_name,
+                    "normalized_pkg_name": normalized_pkg_name,
                     "version": pkg_info.get("PKG_VERSION", "0"),
                     "release": pkg_info.get("PKG_RELEASE", "0"),
                     "path": package_dir,
@@ -372,24 +380,24 @@ class PackageSyncer:
         merged_packages = {}
         
         for pkg in all_packages:
-            pkg_name = pkg["pkg_name"]
+            normalized_pkg_name = pkg["normalized_pkg_name"]
             
             # 如果包名不存在，直接添加
-            if pkg_name not in merged_packages:
-                merged_packages[pkg_name] = pkg
+            if normalized_pkg_name not in merged_packages:
+                merged_packages[normalized_pkg_name] = pkg
             else:
                 # 比较版本，保留最新版本
-                existing = merged_packages[pkg_name]
+                existing = merged_packages[normalized_pkg_name]
                 ver_compare = self._compare_versions(pkg["version"], existing["version"])
                 
                 if ver_compare > 0:
                     # 当前版本更高，替换
-                    merged_packages[pkg_name] = pkg
+                    merged_packages[normalized_pkg_name] = pkg
                 elif ver_compare == 0:
                     # 版本相同，比较release
                     rel_compare = self._compare_versions(pkg["release"], existing["release"])
                     if rel_compare > 0:
-                        merged_packages[pkg_name] = pkg
+                        merged_packages[normalized_pkg_name] = pkg
         
         print(f"合并后得到 {len(merged_packages)} 个唯一软件包")
         
