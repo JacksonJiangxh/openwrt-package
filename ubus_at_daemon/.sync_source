@@ -1,5 +1,0 @@
-repo: modem_feeds
-package: ubus_at_daemon
-hash: 8e30863f72323e1024a1639e5434ce21
-version: $(QMODEM_VERSION)
-release: $(QMODEM_RELEASE)

@@ -1,5 +1,0 @@
-repo: small-package
-package: luci-app-dnsfilter
-hash: b6a5d8933e19fedfbbaeda0d542eb057
-version: 1.0
-release: 14

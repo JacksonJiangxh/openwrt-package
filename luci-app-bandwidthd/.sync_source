@@ -1,5 +1,0 @@
-repo: small-package
-package: luci-app-bandwidthd
-hash: 1277ee22d0586527bcb5f950230fb9d0
-version: 0
-release: 1

@@ -1,5 +1,0 @@
-repo: modem_feeds
-package: sms-tool_q
-hash: 352fe4e7dfbc9d76cfa822a810413bed
-version: $(QMODEM_VERSION)
-release: $(QMODEM_RELEASE)

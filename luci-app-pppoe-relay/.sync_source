@@ -1,5 +1,0 @@
-repo: small-package
-package: luci-app-pppoe-relay
-hash: 6d818da7b634b7c1547d7c07ced44214
-version: 1
-release: 2-20200326

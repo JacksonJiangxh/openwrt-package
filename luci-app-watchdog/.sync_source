@@ -1,5 +1,0 @@
-repo: small-package
-package: luci-app-watchdog
-hash: 14869d71f365e4f88ac58d73bfb2e846
-version: 1.0.6
-release: 20250717

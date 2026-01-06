@@ -46,8 +46,9 @@ class PackageSyncer:
             "skipped_packages": 0
         }
         
-        # 已有的软件包版本信息
+        # 已有的软件包版本信息和目录映射
         self.existing_packages = {}
+        self.package_dirs = {}  # 存储小写 PKG_NAME 到目录名的映射
         
         # 确保目录存在
         self.work_dir.mkdir(parents=True, exist_ok=True)
@@ -58,7 +59,7 @@ class PackageSyncer:
         self.stats["initial_count"] = len(self.existing_packages)
     
     def _scan_existing_packages(self):
-        """扫描输出目录中已存在的软件包，记录版本信息"""
+        """扫描输出目录中已存在的软件包，记录版本信息和目录映射"""
         keep_items = [".git", ".github", ".gitignore", "README.md", "sync_packages.py", "temp_repos"]
         
         for item in self.output_dir.iterdir():
@@ -76,6 +77,10 @@ class PackageSyncer:
                         "version": pkg_info.get("PKG_VERSION", "0"),
                         "release": pkg_info.get("PKG_RELEASE", "0")
                     }
+                    # 记录小写 PKG_NAME 到目录名的映射
+                    if normalized_pkg_name not in self.package_dirs:
+                        self.package_dirs[normalized_pkg_name] = []
+                    self.package_dirs[normalized_pkg_name].append(item.name)
     
     def _parse_makefile(self, makefile_path):
         """
@@ -310,6 +315,15 @@ class PackageSyncer:
         """
         dest_dir = self.output_dir / pkg_name
         
+        # 删除所有具有相同小写 PKG_NAME 的目录
+        normalized_pkg_name = pkg_name.lower()
+        if normalized_pkg_name in self.package_dirs:
+            for dir_name in self.package_dirs[normalized_pkg_name]:
+                dir_path = self.output_dir / dir_name
+                if dir_path.exists() and dir_path != dest_dir:
+                    print(f"删除具有相同 PKG_NAME 的目录: {dir_name}")
+                    shutil.rmtree(dir_path)
+        
         # 删除目标目录（如果存在）
         if dest_dir.exists():
             shutil.rmtree(dest_dir)
@@ -323,6 +337,12 @@ class PackageSyncer:
             f.write(f"package: {pkg_name}\n")
             f.write(f"version: {pkg_version}\n")
             f.write(f"release: {pkg_release}\n")
+        
+        # 更新目录映射
+        if normalized_pkg_name not in self.package_dirs:
+            self.package_dirs[normalized_pkg_name] = []
+        # 移除旧的目录名，添加新的目录名
+        self.package_dirs[normalized_pkg_name] = [pkg_name]
     
     def run_sync(self, source_repos):
         """

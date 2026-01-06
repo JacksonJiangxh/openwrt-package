@@ -1,5 +1,0 @@
-repo: small-package
-package: luci-app-tcpdump
-hash: d863702f0b1a4041f2d5bc9edb45960b
-version: 1.0
-release: 2

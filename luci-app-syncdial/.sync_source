@@ -1,5 +1,0 @@
-repo: small-package
-package: luci-app-syncdial
-hash: 4fd47884cf032433bf79a4271afe85f6
-version: 2.0
-release: 25

@@ -1,4 +1,0 @@
-repo: kiddin9
-package: alwaysonline
-version: $(PKG_UPSTREAM_VERSION)~$(call version_abbrev,$(PKG_UPSTREAM_GITHASH))
-release: 25

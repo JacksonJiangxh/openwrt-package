@@ -1,5 +1,0 @@
-repo: small-package
-package: luci-app-godproxy
-hash: 2dacb28d048f27bbde3f2aebd435afbe
-version: 3.8.5
-release: 20250314

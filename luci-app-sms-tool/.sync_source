@@ -1,5 +1,0 @@
-repo: small-package
-package: luci-app-sms-tool
-hash: c53709719ac83ad67648c4a6efbe6080
-version: 1.9.6
-release: 20230501

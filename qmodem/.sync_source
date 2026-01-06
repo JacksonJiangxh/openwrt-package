@@ -1,5 +1,0 @@
-repo: modem_feeds
-package: qmodem
-hash: 0f4794284d7ec5ed62c4d3d6e06b27a3
-version: $(QMODEM_VERSION)
-release: $(AUTORELEASE)

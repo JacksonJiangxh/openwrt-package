@@ -1,5 +1,0 @@
-repo: modem_feeds
-package: sms_forwarder
-hash: f0232d55e09c880ab9a4b8762a34e172
-version: $(QMODEM_VERSION)
-release: $(AUTORELEASE)

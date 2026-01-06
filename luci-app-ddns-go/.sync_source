@@ -1,5 +1,0 @@
-repo: small-package
-package: luci-app-ddns-go
-hash: ac40e5335f1d09de71bde6b293056e95
-version: 1.6.4
-release: 20251106
