@@ -1,5 +1,0 @@
-repo: small-package
-package: base-files
-hash: 75e886d05e7c2f563def002b6b55d50d
-version: 0
-release: $(COMMITCOUNT)

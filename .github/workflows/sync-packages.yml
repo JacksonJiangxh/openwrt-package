@@ -53,6 +53,12 @@ jobs:
       run: |
         python .github/sync_packages.py --work-dir ./temp_repos --output-dir .
     
+    - name: Remove conflicting packages
+      run: |
+        # 删除与上游仓库冲突的包
+        rm -rf ./base-files ./dnsmasq ./firewall* ./fullconenat ./libnftnl ./nftables ./ppp ./opkg ./ucl ./upx ./vsftpd* ./miniupnpd-iptables ./wireless-regdb
+        echo "Removed conflicting packages"
+    
     - name: Check for changes
       id: check_changes
       run: |
