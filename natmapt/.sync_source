@@ -1,4 +1,4 @@
 repo: kiddin9
 package: natmapt
 version: $(PKG_UPSTREAM_VERSION)$(if $(PKG_UPSTREAM_GITHASH),~$(call version_abbrev,$(PKG_UPSTREAM_GITHASH)))
-release: 69
+release: 70

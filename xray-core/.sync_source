@@ -1,0 +1,4 @@
+repo: small-package
+package: xray-core
+version: 25.12.8
+release: 1
