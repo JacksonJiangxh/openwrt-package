@@ -1,4 +1,4 @@
-repo: kiddin9
+repo: small-package
 package: shadowsocks-libev
 version: 3.3.5
-release: 8
+release: 13
