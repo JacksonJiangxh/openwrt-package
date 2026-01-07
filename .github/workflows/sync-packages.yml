@@ -8,7 +8,6 @@ env:
   SOURCE_REPOS: |
     small-package:https://github.com/kenzok8/small-package.git
     helloworld:https://github.com/fw876/helloworld.git
-    qmodem:https://github.com/FUjr/modem_feeds.git
     kiddin9:https://github.com/kiddin9/kwrt-packages.git
 
 on:

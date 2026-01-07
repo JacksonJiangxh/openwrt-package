@@ -1,4 +1,0 @@
-repo: qmodem
-package: tom_modem
-version: $(QMODEM_VERSION)
-release: $(QMODEM_RELEASE)

@@ -1,4 +1,0 @@
-repo: qmodem
-package: luci-app-qmodem-next
-version: $(QMODEM_VERSION)
-release: 1

@@ -1,4 +1,0 @@
-repo: small-package
-package: luci-app-ddns-go
-version: 1.6.4
-release: 20251106

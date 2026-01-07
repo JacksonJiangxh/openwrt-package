@@ -1,4 +1,0 @@
-repo: qmodem
-package: quectel-cm-5g-m
-version: $(QMODEM_VERSION)
-release: $(AUTORELEASE)

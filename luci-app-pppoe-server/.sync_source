@@ -1,4 +1,0 @@
-repo: small-package
-package: luci-app-pppoe-server
-version: 20211223
-release: 2

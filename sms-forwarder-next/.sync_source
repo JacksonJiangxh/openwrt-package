@@ -1,4 +1,0 @@
-repo: qmodem
-package: sms-forwarder-next
-version: $(QMODEM_VERSION)
-release: $(AUTORELEASE)
