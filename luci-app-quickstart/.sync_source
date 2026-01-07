@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-quickstart
+version: 0.12.5-r2
+release: 32

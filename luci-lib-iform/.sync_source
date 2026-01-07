@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-lib-iform
+version: 1.1.1
+release: 20221115

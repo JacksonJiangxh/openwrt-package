@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-koolproxyR
+version: 3.8.4
+release: 5

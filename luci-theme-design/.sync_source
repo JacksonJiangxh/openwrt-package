@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-theme-design
+version: 5.8.0-20240106
+release: 0

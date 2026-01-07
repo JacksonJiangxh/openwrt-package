@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-fan
+version: 1.0.0-r3
+release: 11

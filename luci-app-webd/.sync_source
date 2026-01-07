@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-webd
+version: 1.4
+release: 12

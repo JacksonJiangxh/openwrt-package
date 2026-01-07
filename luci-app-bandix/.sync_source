@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-bandix
+version: 0.11.1
+release: 39

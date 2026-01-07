@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-pppwn
+version: 1
+release: 15

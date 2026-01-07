@@ -1,0 +1,4 @@
+repo: small-package
+package: nginx
+version: 1.26.1
+release: 2

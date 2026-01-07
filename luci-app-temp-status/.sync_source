@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-temp-status
+version: 0.7.1
+release: 25

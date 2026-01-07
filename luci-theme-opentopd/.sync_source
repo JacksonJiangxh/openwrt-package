@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-theme-opentopd
+version: 1.6.0
+release: 20230207

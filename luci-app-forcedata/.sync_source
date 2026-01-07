@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-forcedata
+version: 1.0.0-20230829
+release: 6

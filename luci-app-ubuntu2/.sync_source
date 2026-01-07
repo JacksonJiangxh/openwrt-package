@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-ubuntu2
+version: 1.1.0-20251012
+release: 5

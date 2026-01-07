@@ -1,0 +1,4 @@
+repo: small-package
+package: tailscale
+version: 1.80.3
+release: 1

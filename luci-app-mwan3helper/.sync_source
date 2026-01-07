@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-mwan3helper
+version: 1
+release: 15

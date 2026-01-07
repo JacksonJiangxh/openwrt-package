@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-modem
+version: 1.4.4
+release: 26

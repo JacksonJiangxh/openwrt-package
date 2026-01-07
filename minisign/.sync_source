@@ -1,0 +1,4 @@
+repo: small-package
+package: minisign
+version: 0.11
+release: 1

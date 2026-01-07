@@ -1,0 +1,4 @@
+repo: kiddin9
+package: subconverter
+version: 0.9.0~$(call version_abbrev,92f66bf5b58be5b3e605bb481db5f5ffd6b2aa78)
+release: 7

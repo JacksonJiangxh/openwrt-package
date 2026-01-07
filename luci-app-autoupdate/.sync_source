@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-autoupdate
+version: 9
+release: 11

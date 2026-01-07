@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-v2ray-server
+version: 13
+release: 13

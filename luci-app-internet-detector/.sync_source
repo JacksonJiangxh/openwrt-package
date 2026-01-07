@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-internet-detector
+version: 1.7.1
+release: 28

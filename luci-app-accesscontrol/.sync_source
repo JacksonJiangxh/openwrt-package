@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-accesscontrol
+version: 1
+release: 13

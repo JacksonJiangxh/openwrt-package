@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-nginx-pingos
+version: 1.19.6
+release: 1

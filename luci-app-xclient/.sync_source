@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-xclient
+version: v2.1
+release: 22

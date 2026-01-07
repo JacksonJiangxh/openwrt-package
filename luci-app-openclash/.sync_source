@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-openclash
+version: 0.47.047
+release: 0

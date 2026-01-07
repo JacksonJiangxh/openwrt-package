@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-diskman
+version: 0.2.13
+release: 5

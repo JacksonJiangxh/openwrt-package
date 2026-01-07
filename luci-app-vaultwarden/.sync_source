@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-vaultwarden
+version: 1.0.1-20240822
+release: 5

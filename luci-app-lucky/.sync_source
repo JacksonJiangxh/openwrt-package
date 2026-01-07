@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-lucky
+version: 3.0.2
+release: 15

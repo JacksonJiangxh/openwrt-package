@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-dae
+version: 0
+release: 0

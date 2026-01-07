@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-udp2raw
+version: 1.0.0
+release: 4

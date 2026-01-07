@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-theme-material3
+version: 1.0
+release: 20250617

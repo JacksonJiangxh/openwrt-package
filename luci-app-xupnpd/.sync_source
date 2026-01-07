@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-xupnpd
+version: 1.8
+release: 14

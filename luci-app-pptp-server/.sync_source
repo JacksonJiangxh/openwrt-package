@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-pptp-server
+version: 20211223
+release: 2
