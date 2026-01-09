@@ -1,4 +1,4 @@
 repo: kiddin9
 package: luci-app-shutdown
 version: 2.0
-release: 3
+release: 4
