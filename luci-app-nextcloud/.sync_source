@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-nextcloud
+version: 1.1.1-20240822
+release: 

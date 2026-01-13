@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-oaf
+version: 6.1.2
+release: 1

@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-webd
+version: 1.4
+release: 1

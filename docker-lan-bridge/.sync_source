@@ -1,0 +1,4 @@
+repo: small-package
+package: docker-lan-bridge
+version: 1.0.1
+release: 1

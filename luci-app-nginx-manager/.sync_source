@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-nginx-manager
+version: 1.0
+release: 20211030

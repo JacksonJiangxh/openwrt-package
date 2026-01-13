@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-cloudflarespeedtest
+version: 1.5.4
+release: 0

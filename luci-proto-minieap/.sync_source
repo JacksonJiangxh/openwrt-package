@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-proto-minieap
+version: 2.1
+release: 1

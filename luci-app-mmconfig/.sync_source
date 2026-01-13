@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-mmconfig
+version: 0.1.1
+release: 11

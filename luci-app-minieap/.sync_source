@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-minieap
+version: 0
+release: 0

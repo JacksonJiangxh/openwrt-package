@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-drawio
+version: 1.0.0-20240822
+release: 

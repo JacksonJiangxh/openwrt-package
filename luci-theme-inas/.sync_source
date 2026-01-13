@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-theme-inas
+version: 0.0.2
+release: 

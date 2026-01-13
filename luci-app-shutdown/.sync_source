@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-shutdown
+version: 2.0
+release: 1

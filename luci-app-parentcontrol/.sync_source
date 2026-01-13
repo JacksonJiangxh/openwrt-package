@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-parentcontrol
+version: 1.7.2
+release: 12

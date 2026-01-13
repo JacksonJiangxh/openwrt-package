@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-shanligong
+version: 2.5.0
+release: 4

@@ -1,0 +1,4 @@
+repo: small-package
+package: shadowsocksr-libev
+version: 2.5.3
+release: 1

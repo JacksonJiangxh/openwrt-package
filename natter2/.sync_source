@@ -1,0 +1,4 @@
+repo: small-package
+package: natter2
+version: 0
+release: $(AUTORELEASE)

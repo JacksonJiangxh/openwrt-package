@@ -1,0 +1,4 @@
+repo: small-package
+package: openvpn-easy-rsa
+version: 3.0.9
+release: 1

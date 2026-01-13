@@ -1,0 +1,4 @@
+repo: small-package
+package: alac
+version: 0.0.7
+release: 2

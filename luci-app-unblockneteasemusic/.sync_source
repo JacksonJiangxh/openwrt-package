@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-unblockneteasemusic
+version: 2.15
+release: 1

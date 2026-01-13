@@ -1,0 +1,4 @@
+repo: small-package
+package: frp
+version: 0.51.3
+release: 1

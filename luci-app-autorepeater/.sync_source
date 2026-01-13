@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-autorepeater
+version: 0.2.3
+release: 2

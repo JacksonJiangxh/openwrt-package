@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-amlogic
+version: 3.1.282
+release: 1

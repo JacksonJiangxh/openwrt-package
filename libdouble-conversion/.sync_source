@@ -1,0 +1,4 @@
+repo: small-package
+package: libdouble-conversion
+version: 3.3.1
+release: 1

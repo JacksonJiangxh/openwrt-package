@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-k3screenctrl
+version: 1.1.0
+release: 12

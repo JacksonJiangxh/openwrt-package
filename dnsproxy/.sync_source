@@ -1,0 +1,4 @@
+repo: small-package
+package: dnsproxy
+version: 0.78.2
+release: 1

@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-istorex
+version: 0.6.6
+release: 0

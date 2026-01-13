@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-aihelper
+version: 1.0.0
+release: 4

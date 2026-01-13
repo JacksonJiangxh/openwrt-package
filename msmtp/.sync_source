@@ -1,0 +1,4 @@
+repo: small-package
+package: msmtp
+version: 1.8.14
+release: 2

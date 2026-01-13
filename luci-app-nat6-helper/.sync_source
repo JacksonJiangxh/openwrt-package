@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-nat6-helper
+version: v1.2
+release: 1

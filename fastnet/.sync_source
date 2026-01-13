@@ -1,0 +1,4 @@
+repo: small-package
+package: fastnet
+version: 0.7.5
+release: 3

@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-openvpn-server-client
+version: 6.0
+release: 4

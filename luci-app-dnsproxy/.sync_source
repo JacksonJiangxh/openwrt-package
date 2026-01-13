@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-dnsproxy
+version: 0
+release: 0

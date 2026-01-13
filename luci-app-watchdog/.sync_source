@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-watchdog
+version: 1.0.6
+release: 20250717

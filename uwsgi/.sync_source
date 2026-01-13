@@ -1,0 +1,4 @@
+repo: small-package
+package: uwsgi
+version: 2.0.26
+release: 1

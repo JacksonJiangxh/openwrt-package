@@ -1,0 +1,4 @@
+repo: kiddin9
+package: alwaysonline
+version: 1.2.1~$(call version_abbrev,206292ca68e4d6c81b215163a7bbd0cd2eb36860)
+release: 26

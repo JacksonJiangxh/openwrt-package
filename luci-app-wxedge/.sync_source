@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-wxedge
+version: 1.1.7-20250516
+release: 

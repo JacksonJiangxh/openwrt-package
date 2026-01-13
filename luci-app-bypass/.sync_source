@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-bypass
+version: 1.2
+release: 22

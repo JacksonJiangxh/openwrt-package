@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-chatgpt-web
+version: 1.2.1
+release: 16
