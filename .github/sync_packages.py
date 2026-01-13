@@ -293,7 +293,7 @@ class PackageSyncer:
     def _sync_single_package(self, repo_name, package_dir):
         """
         同步单个软件包
-        
+
         Args:
             repo_name: 源仓库名称
             package_dir: 软件包目录
@@ -326,20 +326,12 @@ class PackageSyncer:
         # 统一转换为小写，避免大小写冲突
         normalized_pkg_name = pkg_name.lower()
         
-        # 检查是否需要更新
+        # 不再比较版本号，直接根据源优先级同步包
         if normalized_pkg_name in self.existing_packages:
-            existing = self.existing_packages[normalized_pkg_name]
-            if self._compare_versions(pkg_version, existing["version"]) > 0 or \
-               (self._compare_versions(pkg_version, existing["version"]) == 0 and \
-                self._compare_versions(pkg_release, existing["release"]) > 0):
-                # 需要更新
-                self._update_package(repo_name, package_dir, pkg_name, pkg_version, pkg_release, is_special_case)
-                self.stats["updated_packages"] += 1
-                print(f"更新软件包: {pkg_name} -> {pkg_name} (来自 {repo_name})，版本 {existing['version']}-{existing['release']} -> {pkg_version}-{pkg_release}")
-            else:
-                # 跳过，版本相同或更低
-                self.stats["skipped_packages"] += 1
-                print(f"跳过软件包: {pkg_name} -> {pkg_name} (来自 {repo_name})，版本相同或更低")
+            # 已存在的包，直接更新
+            self._update_package(repo_name, package_dir, pkg_name, pkg_version, pkg_release, is_special_case)
+            self.stats["updated_packages"] += 1
+            print(f"更新软件包: {pkg_name} -> {pkg_name} (来自 {repo_name})，版本 {pkg_version}-{pkg_release}")
         else:
             # 新软件包
             self._update_package(repo_name, package_dir, pkg_name, pkg_version, pkg_release, is_special_case)
@@ -394,25 +386,41 @@ class PackageSyncer:
     def run_sync(self, source_repos):
         """
         执行同步操作，实现多源仓库合并
-        
+
         Args:
             source_repos: 源仓库配置，格式：REPO_NAME:URL1,REPO_NAME2:URL2
         """
         print(f"开始同步 OpenWrt 软件包: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         
+        # 定义源仓库优先级顺序
+        # 第一优先级是small-package，第二优先级是kiddin9，其他源按照配置顺序
+        repo_priority = {
+            "small-package": 0,
+            "kiddin9": 1
+        }
+        
         # 解析源仓库配置
-        repos = {}
+        repo_list = []
         for line in source_repos.strip().split("\n"):
             line = line.strip()
             if line and ":" in line:
                 repo_name, repo_url = line.split(":", 1)
-                repos[repo_name.strip()] = repo_url.strip()
+                repo_list.append({
+                    "name": repo_name.strip(),
+                    "url": repo_url.strip(),
+                    "priority": repo_priority.get(repo_name.strip(), len(repo_priority))
+                })
+        
+        # 按优先级排序仓库列表
+        repo_list.sort(key=lambda x: x["priority"])
         
         # 收集所有源仓库的软件包信息
         all_packages = []
         
-        for repo_name, repo_url in repos.items():
-            print(f"\n=== 处理源仓库: {repo_name} ===")
+        for repo in repo_list:
+            repo_name = repo["name"]
+            repo_url = repo["url"]
+            print(f"\n=== 处理源仓库: {repo_name} (优先级: {repo['priority']}) ===")
             repo_path = self._clone_or_pull_repo(repo_url)
             if not repo_path:
                 continue
@@ -437,13 +445,14 @@ class PackageSyncer:
                     "version": pkg_info.get("PKG_VERSION", "0"),
                     "release": pkg_info.get("PKG_RELEASE", "0"),
                     "path": package_dir,
-                    "repo_name": repo_name
+                    "repo_name": repo_name,
+                    "priority": repo["priority"]
                 })
         
         print(f"\n=== 合并软件包信息 ===")
         print(f"共收集到 {len(all_packages)} 个软件包")
         
-        # 合并软件包，保留每个包名的最新版本
+        # 合并软件包，按照源优先级处理同名包
         merged_packages = {}
         
         for pkg in all_packages:
@@ -452,19 +461,13 @@ class PackageSyncer:
             # 如果包名不存在，直接添加
             if normalized_pkg_name not in merged_packages:
                 merged_packages[normalized_pkg_name] = pkg
+                print(f"添加软件包: {pkg['pkg_name']} (来自 {pkg['repo_name']}，优先级 {pkg['priority']})")
             else:
-                # 比较版本，保留最新版本
+                # 如果当前包的源优先级更高，替换现有包
                 existing = merged_packages[normalized_pkg_name]
-                ver_compare = self._compare_versions(pkg["version"], existing["version"])
-                
-                if ver_compare > 0:
-                    # 当前版本更高，替换
+                if pkg["priority"] < existing["priority"]:
                     merged_packages[normalized_pkg_name] = pkg
-                elif ver_compare == 0:
-                    # 版本相同，比较release
-                    rel_compare = self._compare_versions(pkg["release"], existing["release"])
-                    if rel_compare > 0:
-                        merged_packages[normalized_pkg_name] = pkg
+                    print(f"替换软件包: {pkg['pkg_name']} (来自 {pkg['repo_name']}，优先级 {pkg['priority']}) 替换 {existing['repo_name']} (优先级 {existing['priority']})")
         
         print(f"合并后得到 {len(merged_packages)} 个唯一软件包")
         
