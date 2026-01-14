@@ -1,4 +1,0 @@
-repo: small-package
-package: luci-app-openvpn-server
-version: 1.0
-release: 3

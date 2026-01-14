@@ -1,4 +1,0 @@
-repo: small-package
-package: luci-app-iperf3-server
-version: 3.0.0
-release: 3

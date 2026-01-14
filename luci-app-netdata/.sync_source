@@ -1,4 +1,0 @@
-repo: small-package
-package: luci-app-netdata
-version: 2.0.4
-release: 20251106

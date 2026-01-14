@@ -363,12 +363,44 @@ class PackageSyncer:
                     print(f"删除具有相同 PKG_NAME 的目录: {dir_name}")
                     shutil.rmtree(dir_path)
         
-        # 删除目标目录（如果存在）
-        if dest_dir.exists():
-            shutil.rmtree(dest_dir)
+        # 复制软件包目录，处理符号链接
+        import os
+        import stat
         
-        # 复制软件包目录，忽略悬空符号链接
-        shutil.copytree(source_dir, dest_dir, ignore_dangling_symlinks=True)
+        def copy_with_symlinks(src, dst):
+            """
+            复制目录，保留符号链接
+            
+            Args:
+                src: 源目录路径
+                dst: 目标目录路径
+            """
+            # 确保目标目录存在
+            os.makedirs(dst, exist_ok=True)
+            
+            # 遍历源目录中的所有项目
+            for item in os.listdir(src):
+                src_path = os.path.join(src, item)
+                dst_path = os.path.join(dst, item)
+                
+                # 处理符号链接
+                if os.path.islink(src_path):
+                    # 获取符号链接的目标
+                    link_target = os.readlink(src_path)
+                    # 创建符号链接
+                    if os.path.exists(dst_path):
+                        os.unlink(dst_path)
+                    os.symlink(link_target, dst_path)
+                # 处理目录
+                elif os.path.isdir(src_path):
+                    copy_with_symlinks(src_path, dst_path)
+                # 处理普通文件
+                else:
+                    # 使用 shutil.copy2 保留文件元数据
+                    shutil.copy2(src_path, dst_path)
+        
+        # 使用自定义函数复制目录，保留符号链接
+        copy_with_symlinks(source_dir, dest_dir)
         
         # 添加源信息文件
         with open(dest_dir / ".sync_source", "w") as f:

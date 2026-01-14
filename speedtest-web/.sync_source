@@ -1,4 +1,0 @@
-repo: small-package
-package: speedtest-web
-version: 1.1.5
-release: $(AUTORELESE)

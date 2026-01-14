@@ -1,4 +1,0 @@
-repo: kiddin9
-package: Toolkit
-version: 0.4.0.2~$(call version_abbrev,631954eac283e38822c47e3122e9e2a3ac5984c6)
-release: 8

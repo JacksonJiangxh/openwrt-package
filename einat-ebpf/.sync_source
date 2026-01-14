@@ -1,4 +1,0 @@
-repo: kiddin9
-package: einat-ebpf
-version: 0.1.10$(if ,~$(call version_abbrev,))
-release: 57

@@ -1,4 +1,0 @@
-repo: small-package
-package: vmease
-version: 0.8.7
-release: $(ARCH)-1
