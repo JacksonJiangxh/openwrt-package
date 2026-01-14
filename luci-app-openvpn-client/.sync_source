@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-openvpn-client
+version: 20250227
+release: 1

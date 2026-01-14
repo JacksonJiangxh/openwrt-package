@@ -1,0 +1,4 @@
+repo: small-package
+package: headscale
+version: 0.21.0
+release: 1

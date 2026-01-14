@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-autoipsetadder
+version: 1.0
+release: 7

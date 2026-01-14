@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-routerdog
+version: 1.4.10
+release: 

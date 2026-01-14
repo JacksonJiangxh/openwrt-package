@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-onliner
+version: 1.1
+release: 5

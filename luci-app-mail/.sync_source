@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-mail
+version: 0
+release: 0

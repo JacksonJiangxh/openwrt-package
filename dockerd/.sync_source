@@ -1,0 +1,4 @@
+repo: small-package
+package: dockerd
+version: 29.1.4
+release: 1

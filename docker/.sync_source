@@ -1,0 +1,4 @@
+repo: small-package
+package: docker
+version: 29.2.0-rc.1
+release: 1

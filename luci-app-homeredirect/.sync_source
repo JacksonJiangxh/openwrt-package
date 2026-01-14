@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-homeredirect
+version: 1.0
+release: 1-20200805

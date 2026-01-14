@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-packet-capture
+version: 0
+release: 0

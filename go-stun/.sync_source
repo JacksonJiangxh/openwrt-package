@@ -1,0 +1,4 @@
+repo: kiddin9
+package: go-stun
+version: 0.1.4~$(call version_abbrev,d32c135f5e509d278e95ba9945849903f966a91f)
+release: 9

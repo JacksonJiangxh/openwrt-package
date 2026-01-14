@@ -1,0 +1,4 @@
+repo: small-package
+package: autoshare-samba
+version: 1
+release: 11

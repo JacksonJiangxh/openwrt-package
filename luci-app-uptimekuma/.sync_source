@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-uptimekuma
+version: 1.0.1-20251011
+release: 

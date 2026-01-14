@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-theme-argone
+version: 1.8.3
+release: 5

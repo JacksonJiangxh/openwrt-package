@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-sysuh3c
+version: 1.0
+release: 3

@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-dnsfilter
+version: 1.0
+release: 14

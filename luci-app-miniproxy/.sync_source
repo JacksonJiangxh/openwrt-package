@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-miniproxy
+version: 4.2
+release: 3

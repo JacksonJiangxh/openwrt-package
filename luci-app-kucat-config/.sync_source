@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-kucat-config
+version: 2.1.5
+release: 6

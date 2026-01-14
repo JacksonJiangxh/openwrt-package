@@ -1,0 +1,4 @@
+repo: small-package
+package: lua-maxminddb
+version: 0.2
+release: $(AUTORELEASE)

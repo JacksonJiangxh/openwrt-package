@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-istorego
+version: 0.0.3
+release: 

@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-xray-geodata
+version: 3.7.0
+release: 1

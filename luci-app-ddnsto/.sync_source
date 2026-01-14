@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-ddnsto
+version: 3.2.0-r5
+release: 

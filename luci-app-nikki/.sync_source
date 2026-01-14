@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-nikki
+version: 1.25.0
+release: 0

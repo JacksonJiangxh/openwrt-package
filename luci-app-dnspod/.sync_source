@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-dnspod
+version: 1.16
+release: 10

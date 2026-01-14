@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-chongyoung
+version: 4.1.1
+release: 4

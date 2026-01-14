@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-argon-config
+version: 0
+release: 0

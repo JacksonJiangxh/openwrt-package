@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-easyconfig-transfer
+version: 1.0.16
+release: 10

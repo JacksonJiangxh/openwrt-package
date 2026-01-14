@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-mwan3-ledhelper
+version: 0.0.1
+release: 4

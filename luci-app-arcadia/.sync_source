@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-app-arcadia
+version: 1.0.0-20250610
+release: 

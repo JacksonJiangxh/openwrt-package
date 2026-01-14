@@ -1,0 +1,4 @@
+repo: small-package
+package: shadowsocks-libev
+version: 3.3.5
+release: 13

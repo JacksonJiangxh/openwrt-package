@@ -1,0 +1,4 @@
+repo: small-package
+package: luci-theme-edge
+version: 2.5
+release: 20210107

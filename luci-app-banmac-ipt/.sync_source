@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-banmac-ipt
+version: 20211118
+release: 2

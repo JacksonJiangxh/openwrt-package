@@ -1,0 +1,4 @@
+repo: kiddin9
+package: luci-app-cellularstatus
+version: 1.0.1
+release: 3

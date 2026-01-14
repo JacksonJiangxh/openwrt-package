@@ -1,0 +1,4 @@
+repo: small-package
+package: dnsforwarder
+version: 6.1.15
+release: 11
